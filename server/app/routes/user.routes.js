@@ -7,7 +7,11 @@ const attachRoutes = (app, { usersController, auth }) => {
     router
         .post('/users', usersController.createUser)
         .get('/users', usersController.getUsers)
-        .put('/users', usersController.authenticateUser);
+        .put('/users', usersController.authenticateUser)
+        .put(
+            '/users/:id/rate',
+            passport.authenticate('jwt'),
+            usersController.rateUser);
 
     app.use('/api', router);
 };

@@ -53,10 +53,9 @@ const usersController = ({ users }, utils) => {
         },
         rateUser(req, res) {
             const userToRateId = req.params.id;
+            const raterUsername = req.user.username;
 
-            const { rating, ratingUserId } = req.body;
-
-            users.rateUser(userToRateId, ratingUserId, rating)
+            users.rateUser(userToRateId, raterUsername)
                 .then((result) => {
                     return res.send({ success: true, response: result });
                 })

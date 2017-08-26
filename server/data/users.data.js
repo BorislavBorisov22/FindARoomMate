@@ -55,29 +55,28 @@ class UsersData extends Data {
             });
     }
 
-    rateUser(userId, ratingUserId, rating) {
-        const promises = [this.findById(userId), this.findUserByUsername(ratingUser)]
+    rateUser(userId, raterUsername) {
+        if (typeof raterUsername !== 'string') {
+            return Promise.reject('Rater username must be a string!');
+        }
 
-        return Promise.all(promises)
-            .then((userToRate, ratingUser) => {
-                if (!userToRate) {
-                    return Promise.reject('Invalid user to be rated id!');
+        this.findById(userId)
+            .then((foundUser) => {
+                if (!foundUser) {
+                    return Promise.reject('Invalid userRate id!');
                 }
 
-                if (!ratingUser) {
-                    return Promise.reject('Ivanlid rating user id!');
-                }
-
-                const hasAlreadyCommented = userToRate.ratingUsers
-                    .findIndex(x => x == ratingUser.username) >= 0;
+                const hasAlreadyRated = foundUser.ratingUsers
+                    .findIndex(x => x.username == raterUsername) >= 0;
 
                 if (hasAlreadyCommented) {
                     return Promise.reject('User has already been rated!');
                 }
 
-                userToRate.ratingUsers.push(ratingUser.username);
-                userToRate.rating += 1;
-                return Promise.resolve(userToRate.username);
+                foundUser.rating += 1;
+                foundUser.ratingUsers.push(raterUsername);
+
+                return this.update(foundUser);
             });
     }
 
