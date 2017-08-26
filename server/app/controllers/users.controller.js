@@ -1,11 +1,15 @@
+const DEFAULT_RATING = 0;
+const DEFAULT_RATES_COUNT = 0;
+
 const usersController = ({ users }, utils) => {
     return {
         createUser(req, res) {
             const user = req.body;
 
+            user.rating = DEFAULT_RATING;
+            user.ratingUsers = [];
             return users.add(user)
                 .then(() => {
-                    console.log(user);
                     res.send({ success: true, message: `user ${user.username} created!` });
                 })
                 .catch((errMessage) => {
@@ -13,10 +17,6 @@ const usersController = ({ users }, utils) => {
                 });
         },
         getUsers(req, res) {
-            if (!req.user) {
-                return { success: false };
-            }
-
             return users.getAll()
                 .then((users) => {
                     return res.send(users);
@@ -51,6 +51,21 @@ const usersController = ({ users }, utils) => {
                     res.send(({ success: false, message: 'Invalid Credentials' }))
                 });
         },
+        rateUser(req, res) {
+            const userToRateId = req.params.id;
+
+            const { rating, ratingUserId } = req.body;
+
+            users.rateUser(userToRateId, ratingUserId, rating)
+                .then((result) => {
+                    return res.send({ success: true, response: result });
+                })
+                .catch((err) => {
+                    return res
+                        .status(400)
+                        .send({ success: false, err });
+                });
+        }
     };
 };
 
