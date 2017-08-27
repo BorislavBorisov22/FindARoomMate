@@ -5,7 +5,6 @@ const usersController = ({ users }, utils) => {
     return {
         createUser(req, res) {
             const user = req.body;
-
             user.rating = DEFAULT_RATING;
             user.ratingUsers = [];
             return users.add(user)
@@ -45,10 +44,11 @@ const usersController = ({ users }, utils) => {
                     };
 
                     const token = utils.generateToken(jwtObject);
-                    return res.send({ success: true, message: 'login success!', token, });
+                    return res.send({ success: true, message: 'login success!', token, username: user.username });
                 })
-                .catch(() => {
-                    res.send(({ success: false, message: 'Invalid Credentials' }))
+                .catch((err) => {
+                    console.log(err, 'error, error');
+                    res.status(400).send(({ success: false, message: 'Invalid Credentials' }))
                 });
         },
         rateUser(req, res) {

@@ -1,0 +1,62 @@
+<!-- <form #registerForm='ngForm' (ngSubmit)='onRegisterSubmit()'>
+    <table class='example-full-width' cellspacing='0'>
+        <tr>
+            <td>
+                <input required placeholder='First name' name="firstName" [(ngModel)]="user.firstName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input required placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.username">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input required placeholder='Password' type='password' name="password" [(ngModel)]="user.password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button>Register</button>
+            </td>
+        </tr>
+    </table>
+</form> -->
+
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="card card-body">
+                <img class="img-fluid img-thumbnail" src="http://www.movingtonewyorkguide.com/wp-content/uploads/2013/06/NYC-Roommate.png">
+                <form (ngSubmit)='onRegisterSubmit()'>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="user.firstName" placeholder="First name" name="firstName" type="text">
+                    </div>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="user.lastName" placeholder="Last name" name="lastName" type="text">
+                    </div>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="user.username" placeholder="Username" name="username" type="text">
+                    </div>
+                    <div class="form-group has-success">
+                        <input class="form-control input-lg" [(ngModel)]="user.password" placeholder="Password" name="password" value="" type="password">
+                    </div>
+                    <div class="form-group has-success">
+                        <input class="form-control input-lg" placeholder="Confirm Password" name="password_confirm" value="" type="password">
+                    </div>
+                    <div class="checkbox">
+                        <label class="small">
+                                <input name="terms" type="checkbox">I have read and agree to the <a href="#">terms of service</a>
+                            </label>
+                    </div>
+                    <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

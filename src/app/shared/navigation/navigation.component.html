@@ -1,0 +1,16 @@
+<nav>
+    <ul class="nav nav-tabs">
+        <li class="nav-item" (click)="setActiveItem('home')">
+            <a class="nav-link" [class.active]="activeItem == 'home'" [routerLink]="['/']">Home</a>
+        </li>
+        <li class="nav-item" [class.hidden]="isUserLogged == true" (click)="setActiveItem('register')">
+            <a class="nav-link" [class.active]="activeItem == 'register'" [routerLink]="['/auth/register']">Register</a>
+        </li>
+        <li class="nav-item" [class.hidden]="isUserLogged == true" (click)="setActiveItem('login')">
+            <a class="nav-link" [class.active]="activeItem == 'login'" [routerLink]="['/auth/login']">Login</a>
+        </li>
+        <li class="nav-item" [class.hidden]="isUserLogged == false" (click)="setActiveItem('logout')">
+            <a class="nav-link" [class.active]="activeItem == 'logout'" [routerLink]="['/auth/logout']">Logout</a>
+        </li>
+    </ul>
+</nav>
