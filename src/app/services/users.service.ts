@@ -5,7 +5,7 @@ import { User } from './../models/user.model';
 import { HttpRequesterService } from './http-requester.service';
 import { Injectable } from '@angular/core';
 
-const DOMAIN_URL = 'localhost:4200/api';
+const DOMAIN_URL = 'http://localhost:4201/api';
 const REGISTER_USER_URL = DOMAIN_URL + '/auth/register';
 const LOGIN_USER_URL = DOMAIN_URL + '/auth/login';
 

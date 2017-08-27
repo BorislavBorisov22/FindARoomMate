@@ -6,10 +6,8 @@ class User {
             typeof user !== 'undefined' &&
             typeof user.username === 'string' &&
             typeof user.password === 'string' &&
-            typeof user.email === 'string' &&
             user.username.match(/^\w{3,20}$/g) &&
-            user.password.match(/^\w{4,20}$/g) &&
-            user.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/g);
+            user.password.match(/^\w{4,20}$/g);
 
         if (!isUserValid) {
             return Promise.reject('Incorrect username or password characters!');

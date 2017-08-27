@@ -5,7 +5,6 @@ const usersController = ({ users }, utils) => {
     return {
         createUser(req, res) {
             const user = req.body;
-
             user.rating = DEFAULT_RATING;
             user.ratingUsers = [];
             return users.add(user)
