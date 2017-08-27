@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { UsersService } from './services/users.service';
+import { Component, OnInit, } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  title = 'app';
-}
+export class AppComponent { }
