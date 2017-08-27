@@ -22,4 +22,8 @@ export class AuthService {
     this.cookieService.delete(USERNAME_COOKIE_NAME);
     this.cookieService.delete(TOKEN_COOKIE_NAME);
   }
+
+  getLoggedUserInfo(): string {
+    return this.cookieService.get(USERNAME_COOKIE_NAME);
+  }
 }

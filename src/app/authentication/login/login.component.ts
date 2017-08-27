@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe((response: any) => {
         const { username, token } = response;
         this.authService.loginUser(username, token);
+        this.router.navigateByUrl('/');
       },
       (err) => {
         console.log(err);

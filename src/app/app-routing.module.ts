@@ -7,7 +7,6 @@ const routes: Routes = [
     {
         path: 'auth',
         loadChildren: './authentication/authentication.module#AuthenticationModule',
-        canActivate: [AuthGuardService]
     }
 ];
 
