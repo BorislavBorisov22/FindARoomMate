@@ -7,12 +7,11 @@ import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class LoginComponent implements OnInit {
   user: User;
 
   constructor(
@@ -24,13 +23,14 @@ export class RegisterComponent implements OnInit {
     this.user = new User();
   }
 
-  onRegisterSubmit(): void {
-    this.usersService.registerUser(this.user)
-      .map(r => r.json())
-      .subscribe((responseObject) => {
-        console.log(`User ${this.user.username} registered successfully!`);
-        this.router.navigateByUrl('/auth/login');
-      }, (err) => {
+  onLoginSubmit(): void {
+    this.usersService.loginUser(this.user)
+      .map((r) => r.json())
+      .subscribe((response: any) => {
+        const { username, token } = response;
+        this.authService.loginUser(username, token);
+      },
+      (err) => {
         console.log(err);
       });
   }

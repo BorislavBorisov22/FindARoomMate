@@ -44,10 +44,10 @@ const usersController = ({ users }, utils) => {
                     };
 
                     const token = utils.generateToken(jwtObject);
-                    return res.send({ success: true, message: 'login success!', token, });
+                    return res.send({ success: true, message: 'login success!', token, username: user.username });
                 })
                 .catch(() => {
-                    res.send(({ success: false, message: 'Invalid Credentials' }))
+                    res.status(400).send(({ success: false, message: 'Invalid Credentials' }))
                 });
         },
         rateUser(req, res) {
