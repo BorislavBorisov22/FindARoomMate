@@ -18,4 +18,8 @@ export class UsersService {
   getUsers() {
     return users;
   }
+
+  isUserLoggedIn() {
+    return false;
+  }
 }

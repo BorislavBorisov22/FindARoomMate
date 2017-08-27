@@ -1,3 +1,4 @@
+import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  user: User;
+
   constructor() { }
 
   ngOnInit() {
+    this.user = new User();
+  }
+
+  onRegisterSubmit() {
   }
 }

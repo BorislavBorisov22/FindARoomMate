@@ -1,3 +1,37 @@
-<p>
-    Register-a e tuk!
-</p>
+<form class='example-form' #registerForm='ngForm' (ngSubmit)='onSubmit()'>
+    <table class='example-full-width' cellspacing='0'>
+        <tr>
+            <td>
+                <md-input-container class='example-full-width'>
+                    <input required mdInput placeholder='First name' name="firstName" [(ngModel)]="user.firstName">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <md-input-container class='example-full-width'>
+                    <input required mdInput placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <md-input-container class='example-full-width'>
+                    <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.username">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <md-input-container class='example-full-width'>
+                    <input required mdInput placeholder='Password' type='password' name="password" [(ngModel)]="user.password">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button md-raised-button type="submit">Register</button>
+            </td>
+        </tr>
+    </table>
+</form>
