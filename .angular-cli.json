@@ -19,14 +19,9 @@
         "prefix": "app",
         "styles": [
             "styles.css",
-            "../node_modules/bootstrap/dist/css/bootstrap.css"
+            "../node_modules/bootstrap/dist/css/bootstrap.min.css"
         ],
-        "scripts": [
-            "../node_modules/jquery/dist/jquery.js",
-            "../node_modules/tether/dist/js/tether.js",
-            "../node_modules/popper.js/dist/esm",
-            "../node_modules/bootstrap/dist/js/bootstrap.js"
-        ],
+        "scripts": [],
         "environmentSource": "environments/environment.ts",
         "environments": {
             "dev": "environments/environment.ts",
