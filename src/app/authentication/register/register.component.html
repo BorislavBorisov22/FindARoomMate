@@ -1,4 +1,4 @@
-<form class='example-form' #registerForm='ngForm' (ngSubmit)='onSubmit()'>
+<form #registerForm='ngForm' (ngSubmit)='onRegisterSubmit()'>
     <table class='example-full-width' cellspacing='0'>
         <tr>
             <td>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>
-                <button md-raised-button type="submit">Register</button>
+                <button md-raised-button>Register</button>
             </td>
         </tr>
     </table>

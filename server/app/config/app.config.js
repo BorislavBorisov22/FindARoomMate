@@ -13,6 +13,23 @@ const configApp = (app) => {
     app.set('superSecret', 'ilovescotchyscotch');
     // app.use(cookieParser());
 
+    app.use((req, res, next) => {
+        // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        // Request methods you wish to allow
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+        // Request headers you wish to allow
+        res.setHeader('Access-Control-Allow-Headers', 'YOUR-CUSTOM-HEADERS-HERE');
+
+        // Set to true if you need the website to include cookies in  requests
+        res.setHeader('Access-Control-Allow-Credentials', true);
+        next();
+    });
+
+    app.set('superSecret', 'ilovescotchyscotch');
+    // app.use(cookieParser());
+
     app.use(multer({
         storage: multer.diskStorage({
             filename: (_, file, callback) => {
