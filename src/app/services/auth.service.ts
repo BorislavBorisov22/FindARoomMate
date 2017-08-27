@@ -23,7 +23,7 @@ export class AuthService {
     this.cookieService.delete(TOKEN_COOKIE_NAME);
   }
 
-  getLoggedUserInfo(): string {
+  getLoggedUserUsername(): string {
     return this.cookieService.get(USERNAME_COOKIE_NAME);
   }
 }
