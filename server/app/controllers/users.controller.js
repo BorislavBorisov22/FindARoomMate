@@ -46,7 +46,8 @@ const usersController = ({ users }, utils) => {
                     const token = utils.generateToken(jwtObject);
                     return res.send({ success: true, message: 'login success!', token, username: user.username });
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.log(err, 'error, error');
                     res.status(400).send(({ success: false, message: 'Invalid Credentials' }))
                 });
         },

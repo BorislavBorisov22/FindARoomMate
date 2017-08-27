@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 const DEFAULT_ACTIVE_ITEM = 'home';
 
@@ -9,8 +9,7 @@ const DEFAULT_ACTIVE_ITEM = 'home';
   styleUrls: ['./navigation.component.css']
 })
 
-export class NavigationComponent implements OnInit {
-
+export class NavigationComponent implements OnInit, DoCheck {
   isUserLogged: boolean;
   activeItem: string;
   username: string;
@@ -19,7 +18,7 @@ export class NavigationComponent implements OnInit {
     private authService: AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activeItem = DEFAULT_ACTIVE_ITEM;
     this.isUserLogged = this.authService.isUserLogged();
     if (this.isUserLogged) {
@@ -27,8 +26,13 @@ export class NavigationComponent implements OnInit {
     }
   }
 
-  setActiveItem(newActiveItem: string) {
+  setActiveItem(newActiveItem: string): void {
     console.log(newActiveItem);
     this.activeItem = newActiveItem;
+  }
+
+  ngDoCheck(): void {
+    this.isUserLogged = this.authService.isUserLogged();
+    this.activeItem = this.activeItem || '';
   }
 }

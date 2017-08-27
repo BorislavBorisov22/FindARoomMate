@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(): void {
+    console.log(this.user, 'registering');
     this.usersService.registerUser(this.user)
       .map(r => r.json())
       .subscribe((responseObject) => {
