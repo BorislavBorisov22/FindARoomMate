@@ -29,7 +29,6 @@ const configApp = (app) => {
 
     app.set('superSecret', 'ilovescotchyscotch');
     // app.use(cookieParser());
-
     app.use(multer({
         storage: multer.diskStorage({
             filename: (_, file, callback) => {

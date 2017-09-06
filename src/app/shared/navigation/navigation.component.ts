@@ -27,7 +27,6 @@ export class NavigationComponent implements OnInit, DoCheck {
   }
 
   setActiveItem(newActiveItem: string): void {
-    console.log(newActiveItem);
     this.activeItem = newActiveItem;
   }
 

@@ -7,8 +7,9 @@
         </ul>
         <ul class="nav nav-tabs navbar-right">
             <li class="dropdown" *ngIf="isUserLogged == true">
-                <a class="nav-link" class="dropdown-toggle" data-toggle="dropdown" href="#">{{username}}
-            <span class="caret"></span></a>
+                <a class="nav-link" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="caret">{{username}} </span>
+                </a>
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link dropdown-link" [routerLink]="['/user/edit']">Edit profile</a>
