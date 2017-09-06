@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { UsersService } from './../../services/users.service';
@@ -12,27 +13,29 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   user: User;
 
   constructor(
-    private usersService: UsersService,
-    private authService: AuthService,
-    private router: Router) { }
+    private readonly usersService: UsersService,
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly notificationService: NotificationService) { }
 
   ngOnInit() {
     this.user = new User();
   }
 
   onRegisterSubmit(): void {
-    console.log(this.user, 'registering');
     this.usersService.registerUser(this.user)
       .map(r => r.json())
       .subscribe((responseObject) => {
-        console.log(`User ${this.user.username} registered successfully!`);
+        const { message } = responseObject;
+
+        this.notificationService.showSuccess(message);
         this.router.navigateByUrl('/auth/login');
       }, (err) => {
-        console.log(err);
+        const { message } = err;
+        this.notificationService.showError(message);
       });
   }
 }

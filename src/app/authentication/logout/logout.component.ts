@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class LogoutComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
-    private router: Router) { }
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly notificationService: NotificationService) { }
 
   ngOnInit() {
     this.authService.logoutUser();
+    // this.notificationService.showSuccess('You have logged out successfully');
     this.router.navigateByUrl('/');
   }
 }

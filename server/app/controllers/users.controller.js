@@ -12,7 +12,7 @@ const usersController = ({ users }, utils) => {
                     res.send({ success: true, message: `user ${user.username} created!` });
                 })
                 .catch((errMessage) => {
-                    res.send({ success: false, message: errMessage })
+                    res.status(400).send({ success: false, message: errMessage })
                 });
         },
         getUsers(req, res) {
@@ -44,7 +44,7 @@ const usersController = ({ users }, utils) => {
                     };
 
                     const token = utils.generateToken(jwtObject);
-                    return res.send({ success: true, message: 'login success!', token, username: user.username });
+                    return res.send({ success: true, message: `User ${user.username} is now logged in!`, token, username: user.username });
                 })
                 .catch((err) => {
                     console.log(err, 'error, error');

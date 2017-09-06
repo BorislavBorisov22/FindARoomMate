@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { UsersService } from './../../services/users.service';
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private notificationService: NotificationService) {
+  }
 
   ngOnInit() {
     this.user = new User();
@@ -27,12 +30,15 @@ export class LoginComponent implements OnInit {
     this.usersService.loginUser(this.user)
       .map((r) => r.json())
       .subscribe((response: any) => {
-        const { username, token } = response;
+        const { username, token, message } = response;
         this.authService.loginUser(username, token);
+
+        this.notificationService.showSuccess(message);
         this.router.navigateByUrl('/');
       },
       (err) => {
-        console.log(err);
+        const { message } = err;
+        this.notificationService.showError('Invalid username or password');
       });
   }
 }

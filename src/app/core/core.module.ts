@@ -1,3 +1,4 @@
+import { NotificationService } from './../services/notification.service';
 import { SharedModule } from './../shared/shared.module';
 import { Http } from '@angular/http';
 import { AuthService } from './../services/auth.service';
@@ -23,6 +24,7 @@ export class CoreModule {
         CookieService,
         HttpRequesterService,
         AuthService,
+        NotificationService
       ]
     };
   }
