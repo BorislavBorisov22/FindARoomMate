@@ -1,16 +1,29 @@
-<nav>
-    <ul class="nav nav-tabs">
-        <li class="nav-item" (click)="setActiveItem('home')">
-            <a class="nav-link" [class.active]="activeItem == 'home'" [routerLink]="['/']">Home</a>
-        </li>
-        <li class="nav-item" [class.hidden]="isUserLogged == true" (click)="setActiveItem('register')">
-            <a class="nav-link" [class.active]="activeItem == 'register'" [routerLink]="['/auth/register']">Register</a>
-        </li>
-        <li class="nav-item" [class.hidden]="isUserLogged == true" (click)="setActiveItem('login')">
-            <a class="nav-link" [class.active]="activeItem == 'login'" [routerLink]="['/auth/login']">Login</a>
-        </li>
-        <li class="nav-item" [class.hidden]="isUserLogged == false" (click)="setActiveItem('logout')">
-            <a class="nav-link" [class.active]="activeItem == 'logout'" [routerLink]="['/auth/logout']">Logout</a>
-        </li>
-    </ul>
+<nav class="navbar">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="nav-item" (click)="setActiveItem('home')">
+                <a class="nav-link" [class.active]="activeItem == 'home'" [routerLink]="['/']">Home</a>
+            </li>
+        </ul>
+        <ul class="nav nav-tabs navbar-right">
+            <li class="dropdown" *ngIf="isUserLogged == true">
+                <a class="nav-link" class="dropdown-toggle" data-toggle="dropdown" href="#">{{username}}
+            <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link dropdown-link" [routerLink]="['/user/edit']">Edit profile</a>
+                    </li>
+                    <li>
+                        <a class="nav-link dropdown-link" [routerLink]="['/auth/logout']">Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" *ngIf="isUserLogged==false" (click)="setActiveItem('register')">
+                <a class="nav-link" [class.active]="activeItem == 'register'" [routerLink]="['/auth/register']">Register</a>
+            </li>
+            <li class="nav-item" *ngIf="isUserLogged==false" (click)="setActiveItem('login')">
+                <a class="nav-link" [class.active]="activeItem == 'login'" [routerLink]="['/auth/login']">Login</a>
+            </li>
+        </ul>
+    </div>
 </nav>

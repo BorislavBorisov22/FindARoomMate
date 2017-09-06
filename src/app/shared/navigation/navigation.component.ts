@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit, DoCheck {
     this.activeItem = DEFAULT_ACTIVE_ITEM;
     this.isUserLogged = this.authService.isUserLogged();
     if (this.isUserLogged) {
-      this.username = this.authService.getLoggedUserUsername();
+      this.username = this.authService.getLoggedUserUsername().trim();
     }
   }
 
