@@ -1,0 +1,11 @@
+ .dropdown{
+    width:120px;
+} 
+
+.dropdown-menu{
+    width: 120px;
+}
+
+.dropdown-link{
+    text-align: center;
+}
