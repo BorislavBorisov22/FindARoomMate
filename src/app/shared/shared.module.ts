@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -17,7 +18,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     HttpModule,
     NavigationComponent,
     CommonModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
   ]
 })
 

@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
@@ -9,6 +10,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
+
 export class EditProfileComponent implements OnInit {
 
   public user: User;
@@ -26,5 +28,20 @@ export class EditProfileComponent implements OnInit {
         this.user = response.user;
       }, (err) => {
       });
+  }
+
+  onSubmit(profilePicture: File): void {
+  }
+
+  onChange(profilePicture: File): void {
+    const fileReader = new FileReader();
+
+    fileReader.onload = (e: any) => {
+      this.user.profilePictureUrl = e.target.result;
+    };
+
+    fileReader.readAsDataURL(profilePicture);
+
+    console.log(profilePicture, 'profilePicture');
   }
 }

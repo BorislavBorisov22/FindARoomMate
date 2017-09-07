@@ -70,12 +70,21 @@ const usersController = ({ users }, utils) => {
                 });
         },
         getProfileInfo(req, res) {
-            console.log('at profile');
             const user = req.user;
 
             delete user.password;
             return res.json({ success: true, user, });
         },
+        updateUserInfo(req, res) {
+            const { user } = req.body;
+
+            if (!user) {
+                return res.send({ success: false, message: 'invalid message!' })
+            }
+
+            users.updateUserInfo(user)
+                .then(() => {});
+        }
     };
 };
 

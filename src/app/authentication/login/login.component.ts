@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   user: User;
 

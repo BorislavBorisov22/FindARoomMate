@@ -14,7 +14,7 @@
                     <li>
                         <a class="nav-link dropdown-link" [routerLink]="['/user/edit']">Edit profile</a>
                     </li>
-                    <li>
+                    <li (click)="logoutUser()">
                         <a class="nav-link dropdown-link" [routerLink]="['/auth/logout']">Logout</a>
                     </li>
                 </ul>

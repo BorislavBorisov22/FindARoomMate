@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserStorageService } from './../../services/user-storage.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 
@@ -15,7 +16,8 @@ export class NavigationComponent implements OnInit, DoCheck {
   username: string;
 
   constructor(
-    private readonly userStorageService: UserStorageService) {
+    private readonly userStorageService: UserStorageService,
+    private readonly router: Router) {
   }
 
   ngOnInit(): void {
@@ -33,5 +35,9 @@ export class NavigationComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.isUserLogged = this.userStorageService.isUserLogged();
     this.activeItem = this.activeItem || '';
+  }
+
+  logoutUser() {
+    this.router.navigateByUrl('/auth/logout');
   }
 }
