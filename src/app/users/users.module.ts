@@ -12,6 +12,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   declarations: [
     EditProfileComponent,
-]
+  ]
 })
 export class UsersModule { }

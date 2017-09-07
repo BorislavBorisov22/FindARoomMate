@@ -3,4 +3,7 @@ export class User {
     lastName: string;
     username: string;
     password: string;
+    profilePictureUrl?: string;
+    description?: string;
+    email?: string;
 }

@@ -6,6 +6,7 @@ const attachRoutes = (app, { usersController, auth }) => {
 
     router
         .post('/auth/register', usersController.createUser)
+        .get('/users/profile', passport.authenticate('jwt'), usersController.getProfileInfo)
         .get('/users', usersController.getUsers)
         .put('/auth/login', usersController.authenticateUser)
         .put(

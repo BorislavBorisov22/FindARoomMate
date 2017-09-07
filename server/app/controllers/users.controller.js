@@ -1,5 +1,7 @@
 const DEFAULT_RATING = 0;
 const DEFAULT_RATES_COUNT = 0;
+const DEFAULT_PROFILE_PICTURE = 'http://www.injazuae.org/wp-content/themes/hope-charity-theme-v16-child/img/default_user.png';
+const DEFAULT_DESCRIPTION = 'None';
 
 const usersController = ({ users }, utils) => {
     return {
@@ -7,9 +9,11 @@ const usersController = ({ users }, utils) => {
             const user = req.body;
             user.rating = DEFAULT_RATING;
             user.ratingUsers = [];
+            user.profilePictureUrl = DEFAULT_PROFILE_PICTURE;
+            user.description = 'none';
             return users.add(user)
                 .then(() => {
-                    res.send({ success: true, message: `user ${user.username} created!` });
+                    res.send({ success: true, message: `user ${user.username} created` });
                 })
                 .catch((errMessage) => {
                     res.status(400).send({ success: false, message: errMessage })
@@ -64,7 +68,14 @@ const usersController = ({ users }, utils) => {
                         .status(400)
                         .send({ success: false, err });
                 });
-        }
+        },
+        getProfileInfo(req, res) {
+            console.log('at profile');
+            const user = req.user;
+
+            delete user.password;
+            return res.json({ success: true, user, });
+        },
     };
 };
 
