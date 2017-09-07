@@ -1,10 +1,11 @@
+import { Response } from '@angular/http';
 import { UserStorageService } from './user-storage.service';
 import { Observable } from 'rxjs/Observable';
 import { HttpRequesterService } from './http-requester.service';
 import { Injectable } from '@angular/core';
 
-const UPLOAD_FILE_NAME = 'uploadFile';
-const UPLOAD_IMAGE_URL = 'http://localhost:4201/api/upload';
+const UPLOAD_FILE_NAME = 'uploads[]';
+const UPLOAD_IMAGE_URL = 'http://localhost:4201/upload';
 
 @Injectable()
 export class FileUploaderService {
@@ -12,13 +13,10 @@ export class FileUploaderService {
   constructor(private readonly httpRequester: HttpRequesterService,
     private userStorageService: UserStorageService) { }
 
-  public uploadFile(file: File) {
-    const body = new FormData();
-    body.append(UPLOAD_FILE_NAME, file);
+  public uploadFile(files: File[]): Observable<Response> {
+    const formData = new FormData();
+    formData.append(UPLOAD_FILE_NAME, files[0]);
 
-    const token = this.userStorageService.getLoggedUserToken();
-    const headers = { token };
-
-    return this.httpRequester.post(UPLOAD_IMAGE_URL, body, headers);
+    return this.httpRequester.postFormData(UPLOAD_IMAGE_URL, formData);
   }
 }

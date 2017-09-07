@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Response, Http } from '@angular/http';
 import { FileUploaderService } from './../../services/file-uploader.service';
 import { NgForm } from '@angular/forms';
@@ -16,12 +17,13 @@ import 'rxjs/add/operator/map';
 export class EditProfileComponent implements OnInit {
 
   public user: User;
+  public profilePictureUrl: string;
 
   constructor(
     private readonly router: Router,
     private readonly usersService: UsersService,
     private readonly fileUploader: FileUploaderService,
-    private readonly http: Http) { }
+    private readonly notificationService: NotificationService) { }
 
   ngOnInit() {
     this.user = new User();
@@ -34,29 +36,19 @@ export class EditProfileComponent implements OnInit {
       });
   }
 
-  onSubmit(profilePicture: File): void {
+  onSubmit(): void {
   }
 
   onChange(files: File[]): void {
-    console.log(files);
-    const formData = new FormData();
-
-    formData.append('uploads[]', files[0]);
-
-    this.http.post('http://localhost:4201/upload', formData)
+    this.fileUploader.uploadFile(files)
       .map(r => r.json())
-      .subscribe((response) => {
-        console.log(files, 'returned files');
+      .subscribe((response: any) => {
+        const { filesUrls } = response;
+        this.user.profilePictureUrl = filesUrls[0];
+
+        this.notificationService.showInfo('Click on save changes in order to save your work');
+      }, (err) => {
+        console.log(err);
       });
-    //   const fileReader = new FileReader();
-
-    //   fileReader.onload = (e: any) => {
-    //     this.user.profilePictureUrl = e.target.result;
-    //     console.log(this.user.profilePictureUrl);
-    //   };
-
-    //   fileReader.readAsDataURL(profilePicture);
-
-    //   console.log(profilePicture, 'profilePicture');
   }
 }

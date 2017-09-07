@@ -7,7 +7,7 @@ const init = (data) => {
     require('./config/app.config')(app);
     require('./config/auth.config')(app, data);
 
-    app.use('/uploads', express.static(path.join(__dirname, '../public/images')));
+    app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
     app.use(express.static(path.join(__dirname, '../../dist')));
 
     const utils = require('./utils')(app);

@@ -6,6 +6,8 @@ const path = require('path');
 const multer = require('multer');
 const jwt = require('jsonwebtoken');
 
+const UPLOADS_URL = 'http://localhost:4201/uploads/';
+
 const configApp = (app) => {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
@@ -35,8 +37,8 @@ const configApp = (app) => {
     const upload = multer({ storage: storage });
 
     app.post("/upload", upload.array("uploads[]", 12), function(req, res) {
-        console.log('files', req.files);
-        res.send(req.files);
+        const filesUrls = req.files.map(x => UPLOADS_URL + x.filename);
+        return res.status(201).send({ success: true, filesUrls, });
     });
 };
 

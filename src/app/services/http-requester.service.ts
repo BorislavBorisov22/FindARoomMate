@@ -30,6 +30,10 @@ export class HttpRequesterService {
     return this.http.post(url, data, requestOptions);
   }
 
+  postFormData(url: string, formData: FormData): Observable<Response> {
+    return this.http.post(url, formData);
+  }
+
   private getRequestOptions(requestHeaders: any): RequestOptions {
     requestHeaders['Content-Type'] = 'application/json';
     const headers = new Headers(requestHeaders);
