@@ -1,6 +1,6 @@
+import { UserStorageService } from './../../services/user-storage.service';
 import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private authService: AuthService,
+    private userStorageService: UserStorageService,
     private router: Router,
     private notificationService: NotificationService) {
   }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       .map((r) => r.json())
       .subscribe((response: any) => {
         const { username, token, message } = response;
-        this.authService.loginUser(username, token);
+        this.userStorageService.loginUser(username, token);
 
         this.notificationService.showSuccess(message);
         this.router.navigateByUrl('/');

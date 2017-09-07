@@ -1,7 +1,9 @@
+import { LogoutGuardService } from './../services/guards/logout-guard.service';
+import { AuthGuardService } from './../services/guards/auth-guard.service';
+import { UserStorageService } from './../services/user-storage.service';
 import { NotificationService } from './../services/notification.service';
 import { SharedModule } from './../shared/shared.module';
 import { Http } from '@angular/http';
-import { AuthService } from './../services/auth.service';
 import { HttpRequesterService } from './../services/http-requester.service';
 import { UsersService } from './../services/users.service';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
@@ -23,8 +25,10 @@ export class CoreModule {
         UsersService,
         CookieService,
         HttpRequesterService,
-        AuthService,
-        NotificationService
+        UserStorageService,
+        NotificationService,
+        AuthGuardService,
+        LogoutGuardService
       ]
     };
   }

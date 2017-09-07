@@ -1,5 +1,5 @@
-import { LogoutGuardService } from './guards/logout-guard.service';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { LogoutGuardService } from './../services/guards/logout-guard.service';
+import { AuthGuardService } from './../services/guards/auth-guard.service';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';

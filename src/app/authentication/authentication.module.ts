@@ -1,5 +1,5 @@
-import { LogoutGuardService } from './guards/logout-guard.service';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { LogoutGuardService } from './../services/guards/logout-guard.service';
+import { AuthGuardService } from './../services/guards/auth-guard.service';
 import { FormsModule } from '@angular/forms/';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -15,6 +15,6 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule
   ],
   declarations: [RegisterComponent, LoginComponent, LogoutComponent],
-  providers: [AuthGuardService, LogoutGuardService]
+  providers: []
 })
 export class AuthenticationModule { }

@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth.service';
+import { UserStorageService } from './../../services/user-storage.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 
 const DEFAULT_ACTIVE_ITEM = 'home';
@@ -15,14 +15,14 @@ export class NavigationComponent implements OnInit, DoCheck {
   username: string;
 
   constructor(
-    private authService: AuthService) {
+    private readonly userStorageService: UserStorageService) {
   }
 
   ngOnInit(): void {
     this.activeItem = DEFAULT_ACTIVE_ITEM;
-    this.isUserLogged = this.authService.isUserLogged();
+    this.isUserLogged = this.userStorageService.isUserLogged();
     if (this.isUserLogged) {
-      this.username = this.authService.getLoggedUserUsername().trim();
+      this.username = this.userStorageService.getLoggedUserUsername().trim();
     }
   }
 
@@ -31,7 +31,7 @@ export class NavigationComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    this.isUserLogged = this.authService.isUserLogged();
+    this.isUserLogged = this.userStorageService.isUserLogged();
     this.activeItem = this.activeItem || '';
   }
 }

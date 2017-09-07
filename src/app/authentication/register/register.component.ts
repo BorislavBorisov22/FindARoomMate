@@ -1,6 +1,5 @@
 import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +16,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private readonly usersService: UsersService,
-    private readonly authService: AuthService,
     private readonly router: Router,
     private readonly notificationService: NotificationService) { }
 

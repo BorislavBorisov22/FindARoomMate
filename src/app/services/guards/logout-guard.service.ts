@@ -5,12 +5,12 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LogoutGuardService {
-  constructor(private userStorateService: UserStorageService,
+  constructor(private userStorageService: UserStorageService,
     private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    const isUserLogged = this.userStorateService.isUserLogged();
+    const isUserLogged = this.userStorageService.isUserLogged();
 
     if (!isUserLogged) {
       this.router.navigate(['/']);
