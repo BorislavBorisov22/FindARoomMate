@@ -6,7 +6,7 @@
             <div class="text-center">
                 <img src="{{this.user.profilePictureUrl}}" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
-                <input (change)="onChange(updateProfilePictureInput.files[0])" type="file" #updateProfilePictureInput class="text-center center-block well well-sm">
+                <input (change)="onChange(updateProfilePictureInput.files)" type="file" #updateProfilePictureInput class="text-center center-block well well-sm">
             </div>
         </div>
         <!-- edit form column -->

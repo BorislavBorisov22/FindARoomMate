@@ -1,3 +1,5 @@
+import { Response, Http } from '@angular/http';
+import { FileUploaderService } from './../../services/file-uploader.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
@@ -17,7 +19,9 @@ export class EditProfileComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly usersService: UsersService) { }
+    private readonly usersService: UsersService,
+    private readonly fileUploader: FileUploaderService,
+    private readonly http: Http) { }
 
   ngOnInit() {
     this.user = new User();
@@ -33,15 +37,26 @@ export class EditProfileComponent implements OnInit {
   onSubmit(profilePicture: File): void {
   }
 
-  onChange(profilePicture: File): void {
-    const fileReader = new FileReader();
+  onChange(files: File[]): void {
+    console.log(files);
+    const formData = new FormData();
 
-    fileReader.onload = (e: any) => {
-      this.user.profilePictureUrl = e.target.result;
-    };
+    formData.append('uploads[]', files[0]);
 
-    fileReader.readAsDataURL(profilePicture);
+    this.http.post('http://localhost:4201/upload', formData)
+      .map(r => r.json())
+      .subscribe((response) => {
+        console.log(files, 'returned files');
+      });
+    //   const fileReader = new FileReader();
 
-    console.log(profilePicture, 'profilePicture');
+    //   fileReader.onload = (e: any) => {
+    //     this.user.profilePictureUrl = e.target.result;
+    //     console.log(this.user.profilePictureUrl);
+    //   };
+
+    //   fileReader.readAsDataURL(profilePicture);
+
+    //   console.log(profilePicture, 'profilePicture');
   }
 }

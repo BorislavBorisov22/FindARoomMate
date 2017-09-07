@@ -84,7 +84,7 @@ const usersController = ({ users }, utils) => {
 
             users.updateUserInfo(user)
                 .then(() => {});
-        }
+        },
     };
 };
 

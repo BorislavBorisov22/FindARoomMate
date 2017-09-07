@@ -16,24 +16,28 @@ const configApp = (app) => {
     app.use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', ['Content-Type', 'token']);
+        res.setHeader('Access-Control-Allow-Headers', ['Content-Type', 'token', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept']);
         res.setHeader('Access-Control-Allow-Credentials', true);
         next();
     });
 
     app.set('superSecret', 'ilovescotchyscotch');
-    // app.use(cookieParser());
-    app.use(multer({
-        storage: multer.diskStorage({
-            filename: (_, file, callback) => {
-                callback(null, Date.now() + '.jpg');
-            },
-            destination: (_, file, callback) => {
-                callback(null,
-                    path.join(__dirname, '../../public/images/uploads'));
-            },
-        }),
-    }).single('uploadFile'));
+
+    const storage = multer.diskStorage({
+        filename: function(req, file, cb) {
+            cb(null, `${Date.now()}.jpg`);
+        },
+        destination: function(req, file, cb) {
+            cb(null, path.join(__dirname, `../../uploads`));
+        },
+    });
+
+    const upload = multer({ storage: storage });
+
+    app.post("/upload", upload.array("uploads[]", 12), function(req, res) {
+        console.log('files', req.files);
+        res.send(req.files);
+    });
 };
 
 module.exports = configApp;
