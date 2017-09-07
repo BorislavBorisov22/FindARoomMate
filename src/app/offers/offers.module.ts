@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OffersRoutingModule } from './offers-routing.module';
 import { AddOfferComponent } from './add-offer/add-offer.component';
+import { AllOffersComponent } from './all-offers/all-offers.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { AddOfferComponent } from './add-offer/add-offer.component';
     FormsModule
   ],
   declarations: [
-    AddOfferComponent
+    AddOfferComponent,
+    AllOffersComponent
 ]
 })
 export class OffersModule { }

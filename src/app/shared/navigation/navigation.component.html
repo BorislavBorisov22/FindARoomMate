@@ -4,6 +4,9 @@
             <li class="nav-item" (click)="setActiveItem('home')">
                 <a class="nav-link" [class.active]="activeItem == 'home'" [routerLink]="['/']">Home</a>
             </li>
+            <li class="nav-item" (click)="setActiveItem('offers')">
+                <a class="nav-link" [class.active]="activeItem == 'offers'" [routerLink]="['/offers/all']">All offers</a>
+            </li>
         </ul>
         <ul class="nav nav-tabs navbar-right">
             <li class="dropdown" *ngIf="isUserLogged == true">
