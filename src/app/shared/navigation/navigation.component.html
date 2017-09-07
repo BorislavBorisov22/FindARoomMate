@@ -7,8 +7,8 @@
         </ul>
         <ul class="nav nav-tabs navbar-right">
             <li class="dropdown" *ngIf="isUserLogged == true">
+                <span class="caret">{{username}}</span>
                 <a class="nav-link" class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="caret">{{username}} </span>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
