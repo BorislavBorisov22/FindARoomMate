@@ -1,0 +1,29 @@
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="card card-body">
+                <form (ngSubmit)='onAddSubmit()'>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
+                    </div>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="offer.description" placeholder="Description" name="description" type="text">
+                    </div>
+                    <div class="form-group has-error">
+                        <input class="form-control input-lg" [(ngModel)]="offer.image1" placeholder="Image" name="image1" type="text">
+                    </div>
+                    <div class="form-group has-success">
+                        <input class="form-control input-lg" [(ngModel)]="offer.image2" placeholder="Image" name="image2" type="text">
+                    </div>
+                    <div class="form-group has-success">
+                        <input class="form-control input-lg" [(ngModel)]="offer.image3" placeholder="Image" name="image3" type="text">
+                    </div>
+                    <div class="form-group has-success">
+                        <input class="form-control input-lg" [(ngModel)]="offer.price" placeholder="Price" name="price" type="text">
+                    </div>
+                    <input class="btn btn-lg btn-primary btn-block" value="Create" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
