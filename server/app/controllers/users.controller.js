@@ -76,15 +76,21 @@ const usersController = ({ users }, utils) => {
             return res.json({ success: true, user, });
         },
         updateUserInfo(req, res) {
-            const { user } = req.body;
+            const userToUpdate = req.body;
 
-            if (!user) {
-                return res.send({ success: false, message: 'invalid message!' })
+            if (req.user.username !== userToUpdate.username) {
+                return res.status(400).send({ success: false, message: 'Cannot edit username!' });
             }
 
-            users.updateUserInfo(user)
-                .then(() => {});
-        },
+            return users.updateUserInfo(userToUpdate)
+                .then((resUser) => {
+                    delete resUser.password;
+                    return res.status(200).send({ success: true, user: resUser });
+                })
+                .then((err) => {
+                    return res.status(400).send({ success: false, err });
+                });
+        }
     };
 };
 

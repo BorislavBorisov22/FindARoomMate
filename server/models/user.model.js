@@ -17,6 +17,22 @@ class User {
         return Promise.resolve(user);
     }
 
+    static validateUserInfo(user) {
+        console.log(user);
+        const isUserValid =
+            typeof user !== 'undefined' &&
+            typeof user.username === 'string' &&
+            typeof user.password === 'string' &&
+            user.username.match(/^\w{3,20}$/g) &&
+            user.password.match(/^\w{4,20}$/g);
+
+        if (!isUserValid) {
+            return Promise.reject('Incorrect username or password characters!');
+        }
+
+        return Promise.resolve(user);
+    }
+
     static validateUserCredentials(user, dbUser) {
         const userPassHash = CryptoJS.SHA1(user.password).toString();
         if (userPassHash == dbUser.password) {

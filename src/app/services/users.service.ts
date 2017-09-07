@@ -9,6 +9,7 @@ const DOMAIN_URL = 'http://localhost:4201/api';
 const REGISTER_USER_URL = DOMAIN_URL + '/auth/register';
 const LOGIN_USER_URL = DOMAIN_URL + '/auth/login';
 const USER_PERSONAL_INFO_URL = DOMAIN_URL + '/users/profile';
+const UPDATE_USER_INFO_URL = DOMAIN_URL + '/users/update';
 
 @Injectable()
 export class UsersService {
@@ -39,7 +40,16 @@ export class UsersService {
     };
 
     const url = USER_PERSONAL_INFO_URL;
-    console.log(url);
     return this.httpRequester.get(USER_PERSONAL_INFO_URL, headers);
+  }
+
+  updateUserInfo(user) {
+    const token = this.userStorageService.getLoggedUserToken();
+    const headers = {
+      token,
+      'Content-Type': 'application/json',
+    };
+
+    return this.httpRequester.put(UPDATE_USER_INFO_URL, user, headers);
   }
 }

@@ -37,6 +37,12 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
+    // this.usersService.updateUserInfo(this.user)
+    //   .map(r => r.json())
+    //   .subscribe((response: any) => {
+    //     console.log(response, 'edite profile');
+    //   }, (err) => {
+    //   });
   }
 
   onChange(files: File[]): void {

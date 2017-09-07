@@ -12,7 +12,8 @@ const attachRoutes = (app, { usersController, auth }) => {
         .put(
             '/users/:id/rate',
             passport.authenticate('jwt'),
-            usersController.rateUser);
+            usersController.rateUser)
+        .put('/users/update', passport.authenticate('jwt'), usersController.updateUserInfo);
 
     app.use('/api', router);
 };
