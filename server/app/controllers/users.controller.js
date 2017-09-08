@@ -48,7 +48,13 @@ const usersController = ({ users }, utils) => {
                     };
 
                     const token = utils.generateToken(jwtObject);
-                    return res.send({ success: true, message: `User ${user.username} is now logged in!`, token, username: user.username });
+                    return res.send({
+                        success: true,
+                        message: `User ${user.username} is now logged in!`,
+                        token,
+                        username: user.username,
+                        profilePicture: user.profilePictureUrl,
+                    });
                 })
                 .catch((err) => {
                     console.log(err, 'error, error');

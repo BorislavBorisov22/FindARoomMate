@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
     this.usersService.loginUser(this.user)
       .map((r) => r.json())
       .subscribe((response: any) => {
-        const { username, token, message } = response;
-        this.userStorageService.loginUser(username, token);
+        const { username, token, message, profilePicture } = response;
+        this.userStorageService.loginUser(username, token, profilePicture);
 
         this.notificationService.showSuccess(message);
         this.router.navigateByUrl('/');

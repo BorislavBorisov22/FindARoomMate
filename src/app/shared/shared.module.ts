@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+
 
 @NgModule({
   imports: [
@@ -12,6 +14,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     RouterModule,
     CommonModule,
     NgbModule,
+    AngularFontAwesomeModule
   ],
   declarations: [NavigationComponent],
   exports: [
@@ -20,6 +23,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     CommonModule,
     NgbModule,
     FormsModule,
+    AngularFontAwesomeModule
   ]
 })
 

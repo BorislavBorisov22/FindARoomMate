@@ -1,11 +1,23 @@
- .dropdown{
-    width:120px;
-} 
-
-.dropdown-menu{
-    width: 120px;
-}
-
-.dropdown-link{
-    text-align: center;
-}
+ .dropdown {
+     width: 120px;
+ }
+ 
+ .dropdown-menu {
+     width: 120px;
+ }
+ 
+ .dropdown-link {
+     text-align: center;
+ }
+ 
+ .navbar-right {
+     float: right !important;
+ }
+ 
+ .profile-pic-small {
+     width: 30px;
+     height: 30px;
+     position: absolute;
+     right: 20.5%;
+     bottom: 25%;
+ }

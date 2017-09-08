@@ -15,6 +15,7 @@ export class NavigationComponent implements OnInit, DoCheck {
   isUserLogged: boolean;
   activeItem: string;
   username: string;
+  profilePicture: string;
 
   constructor(
     private readonly userStorageService: UserStorageService,
@@ -27,6 +28,7 @@ export class NavigationComponent implements OnInit, DoCheck {
     this.isUserLogged = this.userStorageService.isUserLogged();
     if (this.isUserLogged) {
       this.username = this.userStorageService.getLoggedUserUsername().trim();
+      this.profilePicture = this.userStorageService.getLoggedUserProfilePicture();
     }
   }
 
@@ -37,6 +39,7 @@ export class NavigationComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.isUserLogged = this.userStorageService.isUserLogged();
     this.activeItem = this.activeItem || '';
+    this.profilePicture = this.userStorageService.getLoggedUserProfilePicture();
   }
 
   logoutUser() {
