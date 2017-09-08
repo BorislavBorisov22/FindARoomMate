@@ -33,10 +33,9 @@
         <ul class="navbar-nav navbar-sidenav ml-auto" id="exampleAccordion">
             <li *ngIf="isUserLogged==true" class="nav-item">
                 <a class="nav-link " [class.active]="activeItem=='register' " [routerLink]="[ '/auth/register'] ">
-                <img src="{{profilePicture}}" alt="profile-pic" class="profile-pic-small img-responsive img-thumbnail">
-                <span class="nav-link-text ">
-                    {{username}}
-                </span>
+                <img src="{{profilePicture}}" alt="pic" class="profile-pic-small img-responsive img-thumbnail">
+                {{username}}
+                <span class="nav-link-text "></span>
             </a>
             </li>
             <li *ngIf="isUserLogged==false " (click)="setActiveItem('register')" class="nav-item ">
