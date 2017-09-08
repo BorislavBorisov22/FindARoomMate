@@ -6,9 +6,9 @@ const attachRoutes = (app, { offersController }) => {
     const router = new Router();
 
     router
-        .get('/', offersController.getOffers)
-        .post('/', passport.authenticate('jwt'), offersController.addOffer)
-        .put('/:id', passport.authenticate('jwt'), offersController.addComment);
+        .get('/all', offersController.getOffers)
+        .post('/add', offersController.addOffer)
+        .put('/:id', offersController.addComment);
 
     app.use('/api/offers', router);
 };

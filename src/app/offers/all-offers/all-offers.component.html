@@ -1,0 +1,27 @@
+<!-- <div *ngFor="let offer of offers">  
+  <div>Title: {{offer.title}}</div>
+</div>  -->
+
+<!-- Reference: https://github.com/ashleydw/lightbox/ -->
+<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+
+<div class="container mt40">
+    <section class="row">
+
+        <article class="col-xs-12 col-sm-6 col-md-4" *ngFor="let offer of offers">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="#" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
+                        <img src="{{offer.image1}}" alt="Image" />
+                        <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                    </a>
+                </div>
+                <div class="panel-footer">
+                    <h4><a href="#" title="Image">{{offer.title}}</a></h4>
+                    <h4 class = "pull-right">{{offer.price}} BGN</h4>
+                </div>
+            </div>
+        </article>                                            
+
+</section>
+</div>

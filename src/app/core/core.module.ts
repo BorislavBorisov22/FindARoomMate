@@ -1,4 +1,5 @@
 import { FileUploaderService } from './../services/file-uploader.service';
+import { OffersService } from './../services/offers.service';
 import { LogoutGuardService } from './../services/guards/logout-guard.service';
 import { AuthGuardService } from './../services/guards/auth-guard.service';
 import { UserStorageService } from './../services/user-storage.service';
@@ -24,6 +25,7 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         UsersService,
+        OffersService,
         CookieService,
         HttpRequesterService,
         UserStorageService,
