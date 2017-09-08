@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 const DOMAIN_URL = 'http://localhost:4201/api';
 const ADD_OFFER_URL = DOMAIN_URL + '/offers/add';
 const ALL_OFFERS_URL = DOMAIN_URL + '/offers/all';
-const OFFER_INFO_URL =  DOMAIN_URL + '/offers/:id';
+const OFFER_INFO_URL = DOMAIN_URL + '/offers/';
 
 @Injectable()
 export class OffersService {
@@ -24,7 +24,8 @@ export class OffersService {
     return this.httpRequester.get(ALL_OFFERS_URL, {});
   }
 
-  getOfferInfo() {
-    return this.httpRequester.get(OFFER_INFO_URL, {});
+  getOfferInfo(offerId: string) {
+    const url = OFFER_INFO_URL + offerId;
+    return this.httpRequester.get(url, {});
   }
 }

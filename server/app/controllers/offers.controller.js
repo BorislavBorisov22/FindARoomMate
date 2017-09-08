@@ -6,7 +6,7 @@ const offersController = ({ users, offers }, _) => {
             // offer.author = {
             //     username: req.user.username
             // }
-            
+
             return offers.add(offer)
                 .then(() => {
                     res.status(201).send({ success: true, offer });
@@ -24,7 +24,6 @@ const offersController = ({ users, offers }, _) => {
 
         getOfferById(req, res) {
             const id = req.params.id;
-            console.log(id);
             return offers.findById(id)
                 .then((offer) => {
                     res.send({ success: true, offer })
