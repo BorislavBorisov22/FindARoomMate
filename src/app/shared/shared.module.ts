@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { PaginationComponent } from './utils/pagination/pagination.component';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     NgbModule,
     AngularFontAwesomeModule
   ],
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, PaginationComponent],
   exports: [
     HttpModule,
     NavigationComponent,
