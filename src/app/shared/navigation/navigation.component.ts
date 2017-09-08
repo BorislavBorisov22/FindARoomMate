@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
 import { UserStorageService } from './../../services/user-storage.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
@@ -17,7 +18,8 @@ export class NavigationComponent implements OnInit, DoCheck {
 
   constructor(
     private readonly userStorageService: UserStorageService,
-    private readonly router: Router) {
+    private readonly router: Router,
+    private readonly notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -38,6 +40,8 @@ export class NavigationComponent implements OnInit, DoCheck {
   }
 
   logoutUser() {
-    this.router.navigateByUrl('/auth/logout');
+    this.userStorageService.logoutUser();
+    this.notificationService.showSuccess('You are now logged out!');
+    this.router.navigateByUrl('/home');
   }
 }

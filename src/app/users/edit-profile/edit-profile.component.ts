@@ -40,7 +40,7 @@ export class EditProfileComponent implements OnInit {
     this.usersService.updateUserInfo(this.user)
       .map(r => r.json())
       .subscribe((response: any) => {
-        console.log(response, 'edite profile');
+        this.notificationService.showSuccess('Your profile changes have been saved!');
       }, (err) => {
       });
   }
