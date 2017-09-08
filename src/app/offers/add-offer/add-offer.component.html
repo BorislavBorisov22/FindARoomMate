@@ -1,31 +1,52 @@
 <main>
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-md-6 col-lg-4 mx-auto">
-                <div class="card card-body">
-                    <form (ngSubmit)='onAddSubmit()'>
-                        <div class="form-group has-error">
-                            <input class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
-                        </div>
-                        <div class="form-group has-error">
-                            <input class="form-control input-lg" [(ngModel)]="offer.description" placeholder="Description" name="description" type="text">
-                        </div>
-                        <div class="form-group has-error">
-                            <input class="form-control input-lg" [(ngModel)]="offer.image1" placeholder="Image" name="image1" type="text">
-                        </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" [(ngModel)]="offer.image2" placeholder="Image" name="image2" type="text">
-                        </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" [(ngModel)]="offer.image3" placeholder="Image" name="image3" type="text">
-                        </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" [(ngModel)]="offer.price" placeholder="Price" name="price" type="text">
-                        </div>
-                        <input class="btn btn-lg btn-primary btn-block" value="Create" type="submit">
-                    </form>
+    <div class="container" style="padding-top: 60px;">
+        <h1 class="page-header">Add a room for rent</h1>
+        <form class="row" (ngSubmit)="onAddSubmit()">
+            <!-- left column -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-center">
+                    <img class="avatar img-circle img-thumbnail" src="{{offer.image1}}" alt="avatar">
+                    <h6>Room picture</h6>
+                    <input (change)="onRoomPictureUpload(updateProfilePictureInput.files)" type="file" #updateProfilePictureInput class="text-center center-block well well-sm">
                 </div>
             </div>
-        </div>
+            <!-- edit form column -->
+            <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                <div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Title</label>
+                        <div class="col-lg-8">
+                            <input class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Rent:</label>
+                        <div class="input-group col-lg-8">
+                            <span class="input-group-addon">$</span>
+                            <span class="input-group-addon">0.00</span>
+                            <input [(ngModel)]="offer.price" placeholder="Price" name="price" type="text" class="form-control" min="10" max="1200">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label for="exampleTextarea">Description</label>
+                        <textarea [(ngModel)]="offer.description" placeholder="Description" name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="control-label">Address</label>
+                        <div>
+                            <input [(ngModel)]="offer.address" name="address" class="form-control" type="text" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <button class="btn btn-primary" type="submit">Upload Offer</button>
+                            <span></span>
+                            <input class="btn btn-default" value="Cancel" type="reset">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </main>

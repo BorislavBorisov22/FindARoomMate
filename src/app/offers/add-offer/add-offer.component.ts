@@ -1,3 +1,5 @@
+import { NotificationService } from './../../services/notification.service';
+import { FileUploaderService } from './../../services/file-uploader.service';
 import { OffersService } from './../../services/offers.service';
 import { Offer } from './../../models/offer.model';
 import { Router } from '@angular/router';
@@ -17,6 +19,8 @@ export class AddOfferComponent implements OnInit {
   constructor(
     private readonly offersService: OffersService,
     private readonly router: Router,
+    private readonly fileUploader: FileUploaderService,
+    private readonly notifiacator: NotificationService
   ) { }
 
   ngOnInit() {
@@ -28,9 +32,21 @@ export class AddOfferComponent implements OnInit {
       .map(r => r.json())
       .subscribe((responseObject) => {
         this.offer = responseObject.offer;
-        this.router.navigateByUrl('/');
+
+        this.notifiacator.showSuccess('You offer has been added.');
+        this.router.navigateByUrl('/offers/all');
       }, (err) => {
       });
   }
 
+  onRoomPictureUpload(files: File[]): void {
+    this.fileUploader.uploadFile(files)
+      .map(r => r.json())
+      .subscribe(response => {
+        const { filesUrls } = response;
+        this.offer.image1 = filesUrls[0];
+      }, (err) => {
+        console.log(err);
+      });
+  }
 }

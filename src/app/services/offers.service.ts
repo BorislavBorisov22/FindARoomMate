@@ -1,3 +1,4 @@
+import { UserStorageService } from './user-storage.service';
 import { Offer } from './../models/offer.model';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -12,11 +13,19 @@ const ALL_OFFERS_URL = DOMAIN_URL + '/offers/all';
 export class OffersService {
 
   constructor(
-    private httpRequester: HttpRequesterService
+    private readonly httpRequester: HttpRequesterService,
+    private readonly userStorageService: UserStorageService
   ) { }
 
   addOffer(offer: Offer): Observable<Response> {
-    return this.httpRequester.post(ADD_OFFER_URL, offer, {});
+    const token = this.userStorageService.getLoggedUserToken();
+
+    const headers = {
+      token,
+      'Content-Type': 'application/json',
+    };
+
+    return this.httpRequester.post(ADD_OFFER_URL, offer, headers);
   }
 
   getAllOffers() {

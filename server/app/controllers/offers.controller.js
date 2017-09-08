@@ -2,11 +2,11 @@ const offersController = ({ users, offers }, _) => {
     return {
         addOffer(req, res) {
             const offer = req.body;
+            offer.author = {
+                username: req.user.username,
+                profilePictureUrl: req.user.profilePictureUrl,
+            };
 
-            // offer.author = {
-            //     username: req.user.username
-            // }
-            
             return offers.add(offer)
                 .then(() => {
                     res.status(201).send({ success: true, offer });
