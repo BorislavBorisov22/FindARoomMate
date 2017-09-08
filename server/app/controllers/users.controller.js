@@ -77,17 +77,25 @@ const usersController = ({ users }, utils) => {
         },
         updateUserInfo(req, res) {
             const userToUpdate = req.body;
-
-            if (req.user.username !== userToUpdate.username) {
+            const loggedUser = req.user;
+            if (loggedUser.username !== userToUpdate.username) {
                 return res.status(400).send({ success: false, message: 'Cannot edit username!' });
             }
 
-            return users.updateUserInfo(userToUpdate)
-                .then((resUser) => {
-                    delete resUser.password;
-                    return res.status(200).send({ success: true, user: resUser });
+            return users.findUserByUsername(userToUpdate.username)
+                .then((foundUser) => {
+                    foundUser.firstName = userToUpdate.firstName;
+                    foundUser.lastName = userToUpdate.lastName;
+                    foundUser.profilePictureUrl = userToUpdate.profilePictureUrl;
+                    foundUser.description = userToUpdate.description;
+                    foundUser.email = userToUpdate.email;
+
+                    return users.update(foundUser);
                 })
-                .then((err) => {
+                .then(() => {
+                    return res.status(204).send({ success: true, updatedUser: userToUpdate });
+                })
+                .catch((err) => {
                     return res.status(400).send({ success: false, err });
                 });
         }

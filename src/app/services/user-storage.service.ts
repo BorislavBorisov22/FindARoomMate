@@ -19,8 +19,7 @@ export class UserStorageService {
   }
 
   logoutUser(): void {
-    this.cookieService.delete(USERNAME_COOKIE_NAME);
-    this.cookieService.delete(TOKEN_COOKIE_NAME);
+    this.cookieService.deleteAll();
   }
 
   getLoggedUserUsername(): string {

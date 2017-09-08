@@ -9,7 +9,6 @@ const UPLOAD_IMAGE_URL = 'http://localhost:4201/upload';
 
 @Injectable()
 export class FileUploaderService {
-
   constructor(private readonly httpRequester: HttpRequesterService,
     private userStorageService: UserStorageService) { }
 
