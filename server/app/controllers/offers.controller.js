@@ -21,6 +21,15 @@ const offersController = ({ users, offers }, _) => {
                     res.send({ success: true, offers })
                 });
         },
+
+        getOfferById(req, res) {
+            const id = req.params.id;
+            console.log(id);
+            return offers.findById(id)
+                .then((offer) => {
+                    res.send({ success: true, offer })
+                });
+        },
         addComment(req, res) {
             const { comment } = req.body;
             const offerId = req.params.id;

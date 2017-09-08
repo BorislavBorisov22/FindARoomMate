@@ -7,6 +7,7 @@ const attachRoutes = (app, { offersController }) => {
 
     router
         .get('/all', offersController.getOffers)
+        .get('/:id', offersController.getOfferById)
         .post('/add', offersController.addOffer)
         .put('/:id', offersController.addComment);
 

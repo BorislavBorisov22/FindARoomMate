@@ -1,3 +1,4 @@
+import { OfferInfoComponent } from './offer-info/offer-info.component';
 import { FormsModule } from '@angular/forms/';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { AllOffersComponent } from './all-offers/all-offers.component';
   ],
   declarations: [
     AddOfferComponent,
-    AllOffersComponent
+    AllOffersComponent,
+    OfferInfoComponent,
 ]
 })
 export class OffersModule { }

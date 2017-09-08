@@ -11,7 +11,7 @@
         <article class="col-xs-12 col-sm-6 col-md-4" *ngFor="let offer of offers">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="#" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
+                    <a [routerLink]="['/offers/', offer._id]" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
                         <img src="{{offer.image1}}" alt="Image" />
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                     </a>
