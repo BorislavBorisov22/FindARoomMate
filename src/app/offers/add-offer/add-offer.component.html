@@ -7,7 +7,9 @@
                 <div class="text-center">
                     <img class="avatar img-circle img-thumbnail" src="{{offer.image1}}" alt="avatar">
                     <h6>Room picture</h6>
-                    <input (change)="onRoomPictureUpload(updateProfilePictureInput.files)" type="file" #updateProfilePictureInput class="text-center center-block well well-sm">
+                    <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputMain.files, 'image1')" type="file" #updateProfilePictureInputMain class="text-center center-block well well-sm">
+                    <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputSecond.files, 'image2')" type="file" #updateProfilePictureInputSecond class="text-center center-block well well-sm">
+                    <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputThird.files, 'image3')" type="file" #updateProfilePictureInputThird class="text-center center-block well well-sm">
                 </div>
             </div>
             <!-- edit form column -->

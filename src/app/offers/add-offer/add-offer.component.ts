@@ -39,12 +39,12 @@ export class AddOfferComponent implements OnInit {
       });
   }
 
-  onRoomPictureUpload(files: File[]): void {
+  onRoomPictureUpload(files: File[], attachOnPropery: string): void {
     this.fileUploader.uploadFile(files)
       .map(r => r.json())
       .subscribe(response => {
         const { filesUrls } = response;
-        this.offer.image1 = filesUrls[0];
+        this.offer[attachOnPropery] = filesUrls[0];
       }, (err) => {
         console.log(err);
       });
