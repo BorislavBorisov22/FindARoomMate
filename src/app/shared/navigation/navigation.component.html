@@ -21,6 +21,13 @@
                 Offers</span>
                 </a>
             </li>
+            <li (click)="setActiveItem('users')" class=" nav-item ">
+                <a class="nav-link " [class.active]="activeItem=='users' " [routerLink]="[ '/user/all'] ">
+                    <i class="fa fa-commenting"></i>
+                    <span class="nav-link-text ">
+                Community</span>
+                </a>
+            </li>
         </ul>
         <ul class="navbar-nav navbar-sidenav ml-auto" id="exampleAccordion">
             <li *ngIf="isUserLogged==true" class="nav-item">
