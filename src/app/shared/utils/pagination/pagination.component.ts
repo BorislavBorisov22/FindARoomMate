@@ -1,28 +1,21 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+const VISIBLE_PAGES = 5;
+
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-
-const VISIBLE_PAGES = 5;
-
 export class PaginationComponent implements OnInit {
 
-  @Input()
-  currentPage: number;
+  @Input() currentPage: number;
+  @Input() totalElementsCount: number;
+  @Input() size: number;
 
-  @Input()
-  totalElementsCount: number;
-
-  @Input()
-  size: number;
+  @Output() pageChangedEmitted: EventEmitter<number>;
 
   pages: number[];
-
-  @Output()
-  pageChangedEmitted: EventEmitter<number>;
 
   constructor() { }
 

@@ -24,7 +24,8 @@ import { PaginationComponent } from './utils/pagination/pagination.component';
     CommonModule,
     NgbModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    PaginationComponent
   ]
 })
 

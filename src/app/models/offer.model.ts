@@ -2,6 +2,7 @@ import { OfferAuthor } from './offer-author.model';
 const DEFAULT_OFFER_IMAGE = 'http://nursevibe.com/images/clients-pic/2.png';
 
 export class Offer {
+    _id: string;
     title: string;
     description: string;
     image1: string;
