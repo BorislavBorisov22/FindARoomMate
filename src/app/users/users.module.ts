@@ -4,6 +4,7 @@ import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UsersAllComponent } from './users-all/users-all.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   declarations: [
     EditProfileComponent,
+    UsersAllComponent,
   ]
 })
 export class UsersModule { }

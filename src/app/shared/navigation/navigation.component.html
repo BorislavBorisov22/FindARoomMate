@@ -21,13 +21,6 @@
                 Offers</span>
                 </a>
             </li>
-            <li *ngIf="isUserLogged == true" (click)="setActiveItem('addOffer')" class="nav-item">
-                <a class="nav-link dropdown-link" [class.active]="activeItem == 'addOffer'" [routerLink]="[ '/offers/add'] ">
-                    <i class="fa fa-plus-circle"></i>
-                    <span class="nav-link-text ">
-                Add Offer</span>
-                </a>
-            </li>
         </ul>
         <ul class="navbar-nav navbar-sidenav ml-auto" id="exampleAccordion">
             <li *ngIf="isUserLogged==true" class="nav-item">
@@ -57,6 +50,13 @@
                         <li><a class="dropdown-item" [routerLink]="['/user/edit']">Edit Profile</a></li>
                         <li>
                             <a class="dropdown-item" [routerLink]="[ '/auth/logout'] ">Logout</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" [routerLink]="[ '/offers/add'] ">
+                                <i class="fa fa-plus-circle"></i>
+                                <span class="nav-link-text ">
+                                Add Offer</span>
+                            </a>
                         </li>
                     </ul>
                 </a>
