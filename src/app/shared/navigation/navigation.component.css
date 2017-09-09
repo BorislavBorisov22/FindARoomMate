@@ -5,11 +5,11 @@
  .dropdown-menu {
      width: 120px;
  }
- 
  /* .dropdown-link {
      text-align: center;
  }
   */
+ 
  .navbar-right {
      float: right !important;
  }
@@ -17,6 +17,6 @@
  .profile-pic-small {
      width: 30px;
      height: 30px;
-     float:left;
+     float: left;
      margin-right: 5px;
  }

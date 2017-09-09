@@ -8,13 +8,9 @@ const VISIBLE_PAGES = 5;
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
-
-  @Input()
-  currentPage: number;
-  @Input()
-  totalElementsCount: number;
-  @Input()
-  size: number;
+  @Input() currentPage: number;
+  @Input() totalElementsCount: number;
+  @Input() size: number;
 
   @Output()
   pageChangedEmitter: EventEmitter<number>;
@@ -33,7 +29,8 @@ export class PaginationComponent implements OnInit {
 
     let prevPage: number;
     let nextPage: number;
-    while (pagesCount < VISIBLE_PAGES && pagesCount < this.lastPage) {
+
+    while (pagesCount < VISIBLE_PAGES) {
       prevPage = this.pages[0] - 1;
       nextPage = this.pages[this.pages.length - 1] + 1;
 
@@ -54,10 +51,18 @@ export class PaginationComponent implements OnInit {
   }
 
   onPageChanged(page: number) {
+    if (page > this.lastPage) {
+    }
+
+    this.currentPage = page;
     this.pageChangedEmitter.emit(page);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getPages();
+    console.log(this.totalElementsCount, 'total');
+    console.log(this.currentPage, 'current');
+    console.log(this.lastPage, 'last');
+    console.log(this.pages);
   }
 }

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 
 const DEFAULT_PAGE_SIZE = 12;
 const DEFAULT_PAGE = 1;
+const ALL_OFFERS_URL = '/offers/all';
 
 @Component({
   selector: 'app-all-offers',
@@ -14,30 +15,47 @@ const DEFAULT_PAGE = 1;
 export class AllOffersComponent implements OnInit {
   offers: Offer[];
 
-  currentPage: number;
-  pageSize: number;
+  currentPage = DEFAULT_PAGE;
+  pageSize = DEFAULT_PAGE_SIZE;
   totalElementsCount: number;
 
   constructor(
     private readonly offersService: OffersService,
-    private readonly activatedRouter: ActivatedRoute,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) { }
 
   ngOnInit() {
-    this.currentPage = this.activatedRouter.snapshot.queryParams.page || DEFAULT_PAGE;
-    this.pageSize = this.activatedRouter.snapshot.queryParams.size || DEFAULT_PAGE_SIZE;
-
-    this.offers = new Array<Offer>();
-    this.offersService.getAllOffers(this.currentPage, this.pageSize)
-      .map((r) => r.json())
-      .subscribe((response) => {
-        this.offers = response.offers;
-        this.totalElementsCount = response.offersCount;
-      }, (err) => {
+    this.getOffersForCurrentPage();
+    this.activatedRoute.queryParams
+      .subscribe((params) => {
+        this.currentPage = Number(params.page || DEFAULT_PAGE);
+        this.pageSize = Number(params.size || DEFAULT_PAGE_SIZE);
+        this.getOffersForCurrentPage();
       });
   }
 
-  onPageChanged(ev): void {
-    console.log(ev, 'emitted');
+  onPageChanged(page: number): void {
+    this.currentPage = page;
+    this.pageSize = this.pageSize === 0 ? DEFAULT_PAGE_SIZE : this.pageSize;
+    const url = ALL_OFFERS_URL + '?page=' + this.currentPage + '&size=' + this.pageSize;
+    this.router.navigateByUrl(url);
+  }
+
+  getOffersForCurrentPage(): void {
+    this.offers = new Array<Offer>();
+    this.offersService.getAllOffers()
+      .map((r) => r.json())
+      .subscribe((response) => {
+        this.totalElementsCount = response.offers.length;
+
+        const lastPage = Math.ceil(this.totalElementsCount / this.pageSize);
+        if (this.currentPage > lastPage || this.currentPage < 1) {
+          this.currentPage = 1;
+        }
+
+        this.offers = response.offers.splice((this.currentPage - 1) * this.pageSize, this.pageSize);
+      }, (err) => {
+      });
   }
 }

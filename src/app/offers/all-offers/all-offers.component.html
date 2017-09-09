@@ -25,7 +25,9 @@
     </div>
 </main>
 
-<app-pagination (pageChangedEmitter)="onPageChanged($event)" [currentPage]=1 [size]=5 [totalElementsCount]=25></app-pagination>
+<div *ngIf="totalElementsCount">
+    <app-pagination (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount" [size]="pageSize"></app-pagination>
+</div>
 <!-- <div class="container"  class="col-xs-12 col-sm-6 col-md-4">
     <div class="container_inner default_template_holder clearfix page_container_inner">
         <div class="vc_row wpb_row section vc_row-fluid" style=" padding-top:0px; text-align:left;">

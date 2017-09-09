@@ -16,23 +16,9 @@ const offersController = ({ users, offers }, _) => {
                 });
         },
         getOffers(req, res) {
-            console.log(req.query);
-            let page = Number(req.query.page);
-            let size = Number(req.query.size);
-
-            let totalOffersCount = 0;
-            return offers.count()
-                .then((offersCount) => {
-                    const lastPage = Math.ceil(offersCount / size);
-                    if (lastPage > page) {
-                        page = 1;
-                    }
-
-                    totalOffersCount = offersCount;
-                    return offers.getRange(page, size);
-                })
-                .then((resOffers) => {
-                    return res.send({ success: true, offers: resOffers, offersCount: totalOffersCount });
+            return offers.getAll()
+                .then((offers) => {
+                    return res.send({ success: true, offers, });
                 });
         },
         getOfferById(req, res) {

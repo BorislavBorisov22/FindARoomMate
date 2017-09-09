@@ -1,14 +1,14 @@
-<nav id="pagination" aria-label="...">
-    <ul class="pagination pagination-lg">
+<nav class="text-center" id="pagination" aria-label="...">
+    <ul class="pagination pagination-centered pagination-md">
         <li *ngIf="currentPage > 1" (click)="onPageChanged(currentPage - 1)" class="page-item">
             <a class="page-link" tabindex="-1">Previous</a>
         </li>
         <ng-container *ngFor="let page of pages; let index">
-            <li (click)="onPageChanged(index + 1)" class="page-item" [class.active]="page == currentPage">
+            <li (click)="onPageChanged(page)" class="page-item" [class.active]="page == currentPage">
                 <a class="page-link">{{page}}</a>
             </li>
         </ng-container>
-        <li *ngIf="lastPage > currentPage" (click)="onPageChanged(currentPage - 1)" class="page-item">
+        <li *ngIf="lastPage > currentPage" (click)="onPageChanged(currentPage + 1)" class="page-item">
             <a class="page-link">Next</a>
         </li>
     </ul>

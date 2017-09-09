@@ -9,6 +9,7 @@ const DOMAIN_URL = 'http://localhost:4201/api';
 const ADD_OFFER_URL = DOMAIN_URL + '/offers/add';
 const ALL_OFFERS_URL = DOMAIN_URL + '/offers/all';
 const OFFER_INFO_URL = DOMAIN_URL + '/offers/';
+const OFFERS_COUNT_URL = DOMAIN_URL + '/offers/count';
 
 @Injectable()
 export class OffersService {
@@ -29,9 +30,8 @@ export class OffersService {
     return this.httpRequester.post(ADD_OFFER_URL, offer, headers);
   }
 
-  getAllOffers(page: number, size: number) {
-    const url = ALL_OFFERS_URL + '?page=' + page + '&size=' + size;
-    return this.httpRequester.get(url, {});
+  getAllOffers() {
+    return this.httpRequester.get(ALL_OFFERS_URL, {});
   }
 
   getOfferInfo(offerId: string) {
