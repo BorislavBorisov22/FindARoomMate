@@ -38,4 +38,9 @@ export class OffersService {
     const url = OFFER_INFO_URL + offerId;
     return this.httpRequester.get(url, {});
   }
+
+  addComment(comment: string, offerId: string) {
+    const url = OFFER_INFO_URL + offerId;
+    return this.httpRequester.put(url, comment, {});
+  }
 }

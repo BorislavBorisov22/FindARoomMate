@@ -29,9 +29,11 @@ const offersController = ({ users, offers }, _) => {
                 });
         },
         addComment(req, res) {
-            const { comment } = req.body;
+            const comment = req.body;
             const offerId = req.params.id;
-
+            
+            console.log("comment controller");
+            
             comment.author = {
                 username: req.user.username,
             }
