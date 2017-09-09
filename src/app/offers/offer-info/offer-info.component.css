@@ -9,11 +9,12 @@
     border: 1px solid #ccc;
     background-color: white;
     padding: 10px;
-    
+    color: #00bfff;
     margin-left: -8px;
     margin-top: -8px;
 }
-.row-outer{
+.wrapper{
+    margin-top:100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,13 +22,13 @@
 .outher{
     width: 805px;
     border-radius: 5px;
-    background-color: #1abc9c;
+    background-color: #33a1d5;
     margin-top:10px;
     padding-bottom: 30px;
 }
 
 .carousel-inner{
-    height: 500px;
+    height: 400px;
     overflow: hidden;
     object-fit: fill;
     object-position: center;
