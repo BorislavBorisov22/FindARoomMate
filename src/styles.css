@@ -7,3 +7,7 @@
 main {
     margin-top: 7%;
 }
+
+body {
+    background-image: url('../server/uploads/background.png');
+}

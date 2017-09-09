@@ -40,6 +40,7 @@ export class NavigationComponent implements OnInit, DoCheck {
     this.isUserLogged = this.userStorageService.isUserLogged();
     this.activeItem = this.activeItem || '';
     this.profilePicture = this.userStorageService.getLoggedUserProfilePicture();
+    this.username = this.userStorageService.getLoggedUserUsername();
   }
 
   logoutUser() {

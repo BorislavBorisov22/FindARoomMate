@@ -4,7 +4,7 @@ const initUtils = (app) => {
     return {
         generateToken(jwtObject) {
             return jwt.sign(jwtObject, app.get('superSecret'), {
-                expiresIn: 1440,
+                expiresIn: 202020202,
             });
         },
     }

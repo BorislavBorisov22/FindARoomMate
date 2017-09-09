@@ -29,8 +29,9 @@ export class OffersService {
     return this.httpRequester.post(ADD_OFFER_URL, offer, headers);
   }
 
-  getAllOffers() {
-    return this.httpRequester.get(ALL_OFFERS_URL, {});
+  getAllOffers(page: number, size: number) {
+    const url = ALL_OFFERS_URL + '?page=' + page + '&size=' + size;
+    return this.httpRequester.get(url, {});
   }
 
   getOfferInfo(offerId: string) {

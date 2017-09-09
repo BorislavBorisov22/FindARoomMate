@@ -9,30 +9,35 @@ const VISIBLE_PAGES = 5;
 })
 export class PaginationComponent implements OnInit {
 
-  @Input() currentPage: number;
-  @Input() totalElementsCount: number;
-  @Input() size: number;
+  @Input()
+  currentPage: number;
+  @Input()
+  totalElementsCount: number;
+  @Input()
+  size: number;
 
-  @Output() pageChangedEmitted: EventEmitter<number>;
+  @Output()
+  pageChangedEmitter: EventEmitter<number>;
 
   pages: number[];
+  lastPage: number;
 
-  constructor() { }
+  constructor() {
+    this.pageChangedEmitter = new EventEmitter();
+  }
 
   getPages(): void {
-    this.currentPage = this.currentPage || 1;
-
-    const lastPage = Math.ceil(this.totalElementsCount / this.size);
+    this.lastPage = Math.ceil(this.totalElementsCount / this.size);
     this.pages = [this.currentPage];
     let pagesCount = 1;
 
     let prevPage: number;
     let nextPage: number;
-    while (pagesCount < VISIBLE_PAGES) {
+    while (pagesCount < VISIBLE_PAGES && pagesCount < this.lastPage) {
       prevPage = this.pages[0] - 1;
       nextPage = this.pages[this.pages.length - 1] + 1;
 
-      if (nextPage > lastPage && prevPage < 1) {
+      if (nextPage > this.lastPage && prevPage < 1) {
         break;
       }
 
@@ -41,16 +46,18 @@ export class PaginationComponent implements OnInit {
         pagesCount += 1;
       }
 
-      if (nextPage <= lastPage) {
+      if (nextPage <= this.lastPage) {
         this.pages.push(nextPage);
         pagesCount += 1;
       }
     }
   }
 
-  ngOnInit() {
-    this.pageChangedEmitted = new EventEmitter();
-    this.getPages();
+  onPageChanged(page: number) {
+    this.pageChangedEmitter.emit(page);
   }
 
+  ngOnInit() {
+    this.getPages();
+  }
 }
