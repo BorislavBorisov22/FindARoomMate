@@ -4,7 +4,7 @@
 
 .carousel-image {
     width: 100%;
-    height: 600px;
+    height: 580px;
 }
 
 .homepage-hero-module {
@@ -24,32 +24,28 @@
 }
 
 .video-container {
-    position: relative;
     bottom: 0%;
     left: 0%;
-    height: 100%;
     width: 100%;
+    height: 580px;
+    position: relative;
     overflow: hidden;
     background: #000;
 }
 
-.video-container .poster img {
+.home-video{
+    position: absolute;
+}
+
+.poster img {
     width: 100%;
     bottom: 0;
-    position: absolute;
 }
 
 .video-container .filter {
     z-index: 100;
-    position: absolute;
     background: rgba(0, 0, 0, 0.4);
     width: 100%;
-}
-
-.video-container video {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
 }
 
 .video-container video.fillWidth {
