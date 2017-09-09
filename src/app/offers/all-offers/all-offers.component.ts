@@ -54,7 +54,7 @@ export class AllOffersComponent implements OnInit {
           this.currentPage = 1;
         }
 
-        this.offers = response.offers.splice((this.currentPage - 1) * this.pageSize, this.pageSize);
+        this.offers = response.offers.reverse().splice((this.currentPage - 1) * this.pageSize, this.pageSize);
       }, (err) => {
       });
   }
