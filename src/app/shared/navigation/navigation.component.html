@@ -1,8 +1,7 @@
 <nav class="navbar navbar-toggleable-xs navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand pull-left" [routerLink]="['/home']">Find A Roommate</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -10,58 +9,56 @@
         <ul class="navbar-nav navbar-sidenav mr-auto" id="exampleAccordion">
             <li (click)="setActiveItem('home')" class=" nav-item ">
                 <a class="nav-link " [class.active]="activeItem=='home' " [routerLink]="[ '/home'] ">
-                <i class="fa fa-home"></i>
-                <span class="nav-link-text ">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-link-text ">
                 Home</span>
-            </a>
+                </a>
             </li>
             <li (click)="setActiveItem('offers')" class="nav-item">
                 <a class="nav-link dropdown-link" [class.active]="activeItem == 'offers'" [routerLink]="[ '/offers/all'] ">
-                <i class="fa fa-handshake-o"></i>
-                <span class="nav-link-text">
+                    <i class="fa fa-handshake-o"></i>
+                    <span class="nav-link-text">
                 Offers</span>
-            </a>
+                </a>
             </li>
             <li *ngIf="isUserLogged == true" (click)="setActiveItem('addOffer')" class="nav-item">
                 <a class="nav-link dropdown-link" [class.active]="activeItem == 'addOffer'" [routerLink]="[ '/offers/add'] ">
-                <i class="fa fa-plus-circle"></i>
-                <span class="nav-link-text ">
+                    <i class="fa fa-plus-circle"></i>
+                    <span class="nav-link-text ">
                 Add Offer</span>
-            </a>
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-sidenav ml-auto" id="exampleAccordion">
             <li *ngIf="isUserLogged==true" class="nav-item">
                 <a class="nav-link " [class.active]="activeItem=='register' " [routerLink]="[ '/auth/register'] ">
-                <img src="{{profilePicture}}" alt="pic" class="profile-pic-small img-responsive img-thumbnail">
-                {{username}}
-                <span class="nav-link-text "></span>
-            </a>
+                    <img src="{{profilePicture}}" alt="pic" class="profile-pic-small img-responsive img-thumbnail"> {{username}}
+                    <span class="nav-link-text "></span>
+                </a>
             </li>
             <li *ngIf="isUserLogged==false " (click)="setActiveItem('register')" class="nav-item ">
                 <a class="nav-link " [class.active]="activeItem=='register' " [routerLink]="[ '/auth/register'] ">
-                <i class="fa fa-fw fa-table "></i>
-                <span class="nav-link-text ">
+                    <i class="fa fa-fw fa-table "></i>
+                    <span class="nav-link-text ">
                 Register</span>
-            </a>
+                </a>
             </li>
             <li *ngIf="isUserLogged==false " (click)="setActiveItem( 'login') " class="nav-item">
                 <a class="nav-link " [class.active]="activeItem=='login' " [routerLink]="[ '/auth/login'] ">
-                <i class="fa fa-fw fa-table "></i>
-                <span class="nav-link-text ">
+                    <i class="fa fa-fw fa-table "></i>
+                    <span class="nav-link-text ">
                 Login</span>
-            </a>
+                </a>
             </li>
             <li *ngIf="isUserLogged==true" class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <li><a class="dropdown-item" [routerLink]="['/user/edit']">Edit Profile</a></li>
-                    <li>
-                        <a class="dropdown-item" [routerLink]="[ '/auth/logout'] ">Logout</a>
-                    </li>
-                </ul>
+                <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li><a class="dropdown-item" [routerLink]="['/user/edit']">Edit Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" [routerLink]="[ '/auth/logout'] ">Logout</a>
+                        </li>
+                    </ul>
                 </a>
             </li>
         </ul>
