@@ -38,14 +38,14 @@
             </li>
             <li *ngIf="isUserLogged==false " (click)="setActiveItem('register')" class="nav-item ">
                 <a class="nav-link " [class.active]="activeItem=='register' " [routerLink]="[ '/auth/register'] ">
-                    <i class="fa fa-fw fa-table "></i>
+                    <i class="fa fa-user-plus"></i>
                     <span class="nav-link-text ">
                 Register</span>
                 </a>
             </li>
             <li *ngIf="isUserLogged==false " (click)="setActiveItem( 'login') " class="nav-item">
                 <a class="nav-link " [class.active]="activeItem=='login' " [routerLink]="[ '/auth/login'] ">
-                    <i class="fa fa-fw fa-table "></i>
+                    <i class="fa fa-sign-in"></i>
                     <span class="nav-link-text ">
                 Login</span>
                 </a>
