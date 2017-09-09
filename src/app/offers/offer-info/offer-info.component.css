@@ -42,5 +42,18 @@ img{
 
 .footer{
     color: white;
-    margin: 20px;
+    margin: 30px;
+}
+
+.info{
+    padding: 5px;
+}
+
+.profile-picture{
+    width:40px;
+    height: 40px;
+}
+
+.offset{
+    margin-left: 10px;
 }
