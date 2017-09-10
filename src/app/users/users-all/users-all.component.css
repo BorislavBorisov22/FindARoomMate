@@ -58,3 +58,14 @@
     width: 100px;
     height: 60px;
 }
+
+#pagination {
+    margin: 5px;
+    z-index: 1000 important!;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
