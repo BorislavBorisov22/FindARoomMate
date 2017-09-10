@@ -17,7 +17,10 @@ import { PaginationComponent } from './utils/pagination/pagination.component';
     NgbModule,
     AngularFontAwesomeModule
   ],
-  declarations: [NavigationComponent, PaginationComponent],
+  declarations: [
+    NavigationComponent,
+    PaginationComponent,
+  ],
   exports: [
     HttpModule,
     NavigationComponent,

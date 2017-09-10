@@ -7,7 +7,7 @@
 <main>
     <div class="container mt40">
         <section class="row">
-            <article class="col-xs-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let offer of offers">
+            <article class="col-xs-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let offer of (offers|sort)">
                 <!-- <div class="panel panel-default">
                     <div class="panel-body offer-image">
                         <a [routerLink]="['/offers/', offer._id]" title="Image" class="zoom" data-type="image" data-toggle="lightbox">

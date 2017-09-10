@@ -1,3 +1,4 @@
+import { SortPipe } from './shared/pipes/sort.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
