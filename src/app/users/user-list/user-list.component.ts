@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { UserStorageService } from './../../services/user-storage.service';
+import { User } from './../../models/user.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-list',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user: User;
 
-  ngOnInit() {
+  constructor(private readonly usersStorageService: UserStorageService) {
   }
 
+  ngOnInit() {
+    console.log(this.user);
+  }
+
+  isUserRated(user: User): boolean {
+    const loggedUsername = this.usersStorageService.getLoggedUserUsername();
+    if (!this.usersStorageService.isUserLogged()) {
+      return false;
+    }
+
+    return this.user.ratingUsers.some((u) => u === loggedUsername);
+  }
 }

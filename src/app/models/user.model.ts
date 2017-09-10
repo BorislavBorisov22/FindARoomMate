@@ -7,4 +7,6 @@ export class User {
     description?: string;
     email?: string;
     rating: number;
+    ratingUsers: string[];
+    _id?: string;
 }

@@ -46,36 +46,6 @@
     margin-bottom: 0;
 }
 
-.row-section .row-block ul li:hover {
-    cursor: grabbing;
-}
-
-.row-section .row-block .media {
-    border: 1px solid #d5dbdd;
-    padding: 5px 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.04);
-    background: #fff;
-}
-
-.row-section .media .media-left img {
-    width: 75px;
-}
-
-.row-section .media .media-body p {
-    padding: 0 15px;
-    font-size: 14px;
-}
-
-.row-section .media .media-body h4 {
-    color: #6b456a;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 0;
-    padding-left: 14px;
-    margin-top: 12px;
-}
-
 .btn-default {
     background: #6B456A;
     color: #fff;

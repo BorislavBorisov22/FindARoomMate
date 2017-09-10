@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './users-all.component.html',
   styleUrls: ['./users-all.component.css']
 })
+
 export class UsersAllComponent implements OnInit {
 
   users: User[];
@@ -25,14 +26,5 @@ export class UsersAllComponent implements OnInit {
       .subscribe((response) => {
         this.users = response;
       });
-  }
-
-  isUserRated(user: User): boolean {
-    const loggedUsername = this.usersStorageService.getLoggedUserUsername();
-    if (!this.usersStorageService.isUserLogged()) {
-      return false;
-    }
-
-    return true;
   }
 }

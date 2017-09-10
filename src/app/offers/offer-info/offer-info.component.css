@@ -1,45 +1,47 @@
 .descr {
     color: #333;
     text-align: center;
-    padding:10px;
+    padding: 10px;
 }
 
-.container{
+.container {
     width: 800px;
     border: 1px solid #ccc;
     background-color: white;
     padding: 10px;
-    
     margin-left: -8px;
     margin-top: -8px;
 }
-.row-outer{
+
+.row-outer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.outher{
+
+.outher {
     width: 805px;
     border-radius: 5px;
     background-color: #1abc9c;
-    margin-top:10px;
+    margin-top: 10px;
     padding-bottom: 30px;
 }
 
-.carousel-inner{
+.carousel-inner {
     height: 500px;
     overflow: hidden;
     object-fit: fill;
     object-position: center;
 }
 
-img{
+img {
     object-fit: cover;
-    object-position: center; /* Center the image within the element */
+    object-position: center;
+    /* Center the image within the element */
     width: 100%;
 }
 
-.footer{
+.footer {
     color: white;
     margin: 20px;
 }

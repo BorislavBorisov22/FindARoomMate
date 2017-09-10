@@ -1,31 +1,20 @@
-<section class="row-section">
-    <div class="container">
-        <div class="row">
-            <h1 class="text-center"><a class="text-color-primary" href="http://grafreez.com">Our Community</a></h1>
+<main>
+    <section class="row-section">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-center">
+                    <a class="text-color-primary" href="http://grafreez.com">
+                    Users
+                    </a>
+                </h1>
+            </div>
+            <div class="col-md-10 offset-md-1 row-block">
+                <ul>
+                    <li *ngFor="let user of users">
+                        <app-user-list [user]="user"></app-user-list>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-10 offset-md-1 row-block">
-            <ul>
-                <li *ngFor="let user of users">
-                    <div class="media">
-                        <div class="media-left align-self-center">
-                            <img class="rounded-circle" src="{{user.profilePictureUrl}}">
-                        </div>
-                        <div class="media-body">
-                            <h4>{{user.username}}</h4>
-                            <p>{{user.description}}</p>
-                        </div>
-                        <div class="media-right align-self-center">
-                            {{user.rating}}
-                            <a href="#" class="btn btn-default">
-
-                                <i *ngIf="!isUserRated(user) == true" class="fa fa-heart" aria-hidden="true"></i>
-                                <i *ngIf="isUserRated(user)" class="fa fa-heart-o"></i>
-                            </a>
-
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
+    </section>
+</main>

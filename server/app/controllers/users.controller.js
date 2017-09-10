@@ -66,7 +66,7 @@ const usersController = ({ users }, utils) => {
                 });
         },
         rateUser(req, res) {
-            const userToRateId = req.params.id;
+            const userToRateId = req.params.userToRate;
             const raterUsername = req.user.username;
 
             users.rateUser(userToRateId, raterUsername)
