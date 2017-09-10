@@ -54,16 +54,16 @@
                 <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <li><a class="dropdown-item" [routerLink]="['/user/edit']">Edit Profile</a></li>
-                        <li>
-                            <a class="dropdown-item" [routerLink]="[ '/auth/logout'] ">Logout</a>
-                        </li>
                         <li>
                             <a class="dropdown-item" [routerLink]="[ '/offers/add'] ">
                                 <i class="fa fa-plus-circle"></i>
                                 <span class="nav-link-text ">
                                 Add Offer</span>
                             </a>
+                        </li>
+                        <li><a class="dropdown-item" [routerLink]="['/user/edit']">Edit Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" [routerLink]="[ '/auth/logout'] ">Logout</a>
                         </li>
                     </ul>
                 </a>
