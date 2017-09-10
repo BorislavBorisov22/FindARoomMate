@@ -33,7 +33,7 @@ const offersController = ({ users, offers }, _) => {
             const offerId = req.params.id;
 
             comment.author = req.user.username;
-            comment.authorPictureUrl = req.user.profulePictureUrl;
+            comment.authorPictureUrl = req.user.profilePictureUrl;
 
             return offers.addComment(offerId, comment)
                 .then((result) => {
