@@ -26,6 +26,7 @@ export class AddOfferComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngOnInit() {
     this.offer = new Offer();
+    this.subscriptions = [];
   }
 
   onAddSubmit(): void {
