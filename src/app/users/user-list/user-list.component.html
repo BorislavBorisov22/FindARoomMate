@@ -8,10 +8,9 @@
     </div>
     <div class="media-right align-self-center">
         {{user.rating}}
-        <a href="#" class="btn btn-default">
-
+        <button (click)="rateUser()" class="btn btn-default">
             <i *ngIf="isUserRated(user) == true" class="fa fa-heart" aria-hidden="true"></i>
             <i *ngIf="isUserRated(user) == false" class="fa fa-heart-o"></i>
-        </a>
+        </button>
     </div>
 </div>

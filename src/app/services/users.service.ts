@@ -58,16 +58,20 @@ export class UsersService {
     return this.httpRequester.put(UPDATE_USER_INFO_URL, user, headers);
   }
 
-  rateUser(userToRate: User) {
+  rateUser(userToRate: User, dislike: boolean): Observable<Response> {
     const token = this.userStorageService.getLoggedUserToken();
     const headers = {
       token,
       'Content-Type': 'application/json',
     };
 
+    const body = {
+      dislike,
+    };
+
     const userId = userToRate._id;
     const url = DOMAIN_URL + '/users/' + userId + '/rate';
 
-    return this.httpRequester.put(url, {}, headers);
+    return this.httpRequester.put(url, body, headers);
   }
 }
