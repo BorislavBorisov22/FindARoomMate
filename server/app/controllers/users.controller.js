@@ -22,6 +22,10 @@ const usersController = ({ users }, utils) => {
         getUsers(req, res) {
             return users.getAll()
                 .then((users) => {
+                    users = users.map(x => {
+                        delete x.password;
+                        return x;
+                    });
                     return res.send(users);
                 });
         },

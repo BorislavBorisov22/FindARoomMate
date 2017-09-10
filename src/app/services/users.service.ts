@@ -10,6 +10,7 @@ const REGISTER_USER_URL = DOMAIN_URL + '/auth/register';
 const LOGIN_USER_URL = DOMAIN_URL + '/auth/login';
 const USER_PERSONAL_INFO_URL = DOMAIN_URL + '/users/profile';
 const UPDATE_USER_INFO_URL = DOMAIN_URL + '/users/update';
+const GET_ALL_USERS_URL = DOMAIN_URL + '/users';
 
 @Injectable()
 export class UsersService {
@@ -31,7 +32,7 @@ export class UsersService {
     return this.httpRequester.put(LOGIN_USER_URL, user, {});
   }
 
-  getLoggedUserInfo() {
+  getLoggedUserInfo(): Observable<Response> {
     const token = this.userStorageService.getLoggedUserToken();
 
     const headers = {
@@ -43,7 +44,11 @@ export class UsersService {
     return this.httpRequester.get(USER_PERSONAL_INFO_URL, headers);
   }
 
-  updateUserInfo(user) {
+  getAllUsers(): Observable<Response> {
+    return this.httpRequester.get(GET_ALL_USERS_URL, {});
+  }
+
+  updateUserInfo(user): Observable<Response> {
     const token = this.userStorageService.getLoggedUserToken();
     const headers = {
       token,

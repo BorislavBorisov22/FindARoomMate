@@ -1,4 +1,8 @@
+import { UserStorageService } from './../../services/user-storage.service';
+import { UsersService } from './../../services/users.service';
+import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-users-all',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersAllComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
 
-  ngOnInit() {
+  constructor(private readonly usersService: UsersService,
+    private readonly usersStorageService: UserStorageService) {
   }
 
+  ngOnInit() {
+    this.users = [];
+
+    this.usersService.getAllUsers()
+      .map(x => x.json())
+      .subscribe((response) => {
+        this.users = response;
+      });
+  }
+
+  isUserRated(user: User): boolean {
+    const loggedUsername = this.usersStorageService.getLoggedUserUsername();
+    if (!this.usersStorageService.isUserLogged()) {
+      return false;
+    }
+
+    return true;
+  }
 }
