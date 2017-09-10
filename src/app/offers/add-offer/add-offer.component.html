@@ -1,15 +1,15 @@
 <main>
     <div class="container" style="padding-top: 60px;">
         <h1 class="page-header">Add a room for rent</h1>
-        <form class="row" (ngSubmit)="onAddSubmit()">
+        <form class="row" (ngSubmit)="onAddSubmit()" #addOfferForm=ngForm>
             <!-- left column -->
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="text-center">
                     <img class="avatar img-circle img-thumbnail" src="{{offer.image1}}" alt="avatar">
                     <h6>Room pictures</h6>
                     <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputMain.files, 'image1')" type="file" #updateProfilePictureInputMain class="text-center center-block well well-sm">
-                    <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputSecond.files, 'image2')" type="file" #updateProfilePictureInputSecond class="text-center center-block well well-sm">
-                    <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputThird.files, 'image3')" type="file" #updateProfilePictureInputThird class="text-center center-block well well-sm">
+                    <input value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputSecond.files, 'image2')" type="file" #updateProfilePictureInputSecond class="text-center center-block well well-sm">
+                    <input value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputThird.files, 'image3')" type="file" #updateProfilePictureInputThird class="text-center center-block well well-sm">
                 </div>
             </div>
             <!-- edit form column -->
@@ -17,7 +17,8 @@
                 <div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Title</label>
-                        <div class="col-lg-8">
+                        <div class="input-group col-lg-8">
+                            <span class="input-group-addon"><i class="fa fa-superpowers" aria-hidden="true"></i></span>
                             <input required class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
                         </div>
                     </div>
@@ -30,19 +31,22 @@
                     </div>
                     <div class="form-group col-lg-8">
                         <label for="exampleTextarea">Description</label>
-                        <textarea required [(ngModel)]="offer.description" placeholder="Description" name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-info" aria-hidden="true"></i></span>
+                            <textarea required [(ngModel)]="offer.description" placeholder="Description" name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        </div>
                     </div>
                     <div class="form-group col-lg-8">
                         <label class="control-label">Address</label>
-                        <div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                             <input required [(ngModel)]="offer.address" name="address" class="form-control" type="text" placeholder="Address">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
-                            <button class="btn btn-primary" type="submit">Upload Offer</button>
-                            <span></span>
+                            <button class="btn btn-primary" [disabled]="addOfferForm.valid == false" type="submit">Upload Offer</button>
                             <input required class="btn btn-default" value="Cancel" type="reset">
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import { FileUploaderService } from './../../services/file-uploader.service';
 import { OffersService } from './../../services/offers.service';
 import { Offer } from './../../models/offer.model';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
@@ -12,8 +12,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './add-offer.component.html',
   styleUrls: ['./add-offer.component.css']
 })
-export class AddOfferComponent implements OnInit {
-
+export class AddOfferComponent implements OnInit, AfterContentInit {
   offer: Offer;
 
   constructor(
@@ -48,5 +47,9 @@ export class AddOfferComponent implements OnInit {
       }, (err) => {
         console.log(err);
       });
+  }
+
+  ngAfterContentInit(): void {
+    this.notifiacator.showInfo('Please fill out all fields in order to add an offer!');
   }
 }

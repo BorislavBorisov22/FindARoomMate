@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterContentInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -15,8 +15,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./edit-profile.component.css']
 })
 
-export class EditProfileComponent implements OnInit {
-
+export class EditProfileComponent implements OnInit, AfterContentInit {
   public user: User;
   public profilePictureUrl: string;
 
@@ -58,5 +57,9 @@ export class EditProfileComponent implements OnInit {
       }, (err) => {
         console.log(err);
       });
+  }
+
+  ngAfterContentInit(): void {
+    this.notificationService.showInfo('Please fill out all the fields in order to update your profile');
   }
 }
