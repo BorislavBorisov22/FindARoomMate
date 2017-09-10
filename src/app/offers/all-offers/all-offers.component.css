@@ -133,6 +133,25 @@
     font: 400 normal 1.125em "Roboto", Arial, Verdana, sans-serif;
 }
 
+.card img {
+    height: 180px;
+    width: 318px;
+}
+
+.author-pic {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.card {
+    margin: 3%;
+    border: 5px solid gray;
+}
+
+.card-location {
+    float: right;
+}
+
 
 /*!
  * Lightbox for Bootstrap 3 by @ashleydw

@@ -23,7 +23,7 @@ class Offer {
         return Promise.resolve(offer);
     }
 
-    validateComment(comment) {
+    static validateComment(comment) {
         if (!comment.author || typeof comment.author !== 'string') {
             return Promise.reject('Invalid comment author!');
         }

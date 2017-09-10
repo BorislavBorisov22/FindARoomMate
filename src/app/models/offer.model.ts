@@ -11,7 +11,7 @@ export class Offer {
     price: number;
     address: string;
     author?: OfferAuthor;
-    comments?: string[];
+    comments?: Comment[];
 
     constructor() {
         this.image1 = DEFAULT_OFFER_IMAGE;

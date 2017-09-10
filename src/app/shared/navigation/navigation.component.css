@@ -20,3 +20,10 @@
      float: left;
      margin-right: 5px;
  }
+
+ .navbar-brand {
+     color: #33a1d5;
+     font-family: Mistral, Brush Script MT, Rage Italic;
+     font-weight: bold;
+     font-size: 26px;
+ }

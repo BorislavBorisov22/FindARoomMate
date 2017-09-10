@@ -1,43 +1,93 @@
-<main>
-
-    <div class="row-outer">
-        <div class="outher">
-            <div class="container">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img class="d-block img-fluid carousel-image" src="{{offer.image1}}" alt="Third slide">
-                            <!-- <div class="carousel-caption d-none d-md-block">
+<div class="wrapper">
+    <div class="outher">
+        <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img class="d-block img-fluid carousel-image" src="{{offer.image1}}" alt="Third slide">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                         <h3>Title</h3>
                         <p>text</p>
                     </div> -->
-                        </div>
-                        <div class="carousel-item" *ngIf="offer.image2!=null">
-                            <img class="d-block img-fluid carousel-image" src="{{offer.image2}}" alt="Third slide">
-                        </div>
-                        <div class="carousel-item" *ngIf="offer.image3!=null">
-                            <img class="d-block img-fluid carousel-image" src="{{offer.image3}}" alt="Third slide">
-                        </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-item" *ngIf="offer.image2!=null">
+                        <img class="d-block img-fluid carousel-image" src="{{offer.image2}}" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" *ngIf="offer.image3!=null">
+                        <img class="d-block img-fluid carousel-image" src="{{offer.image3}}" alt="Third slide">
+                    </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
 
-                <div class="descr">
-                    <h3 class="title-des">{{offer.title}}</h3>
-                    <h5>{{offer.price}} BGN</h5>
+            <div class="descr">
+                <h3 class="title-des">{{offer.title}}</h3>
+                <h5>{{offer.price}} $</h5>
+            </div>
+        </div>
+        <div class="footer">
+            <div *ngIf="offer.author" class="row">
+                <div class="info" class="col-xs-12 col-md-6">
+                    <h3>Author:</h3>
+                    <img class="offset profile-picture rounded" src="{{offer.author.profilePictureUrl}}" alt="pic">
+                    <h6 class="offset">{{offer.author.username}}</h6>
+                </div>
+                <div class="info" class="col-xs-12 col-md-6">
+                    <h3>Address:</h3>
+                    <h6 class="offset">{{offer.address}}</h6>
                 </div>
             </div>
-            <div class="footer">
-                <h2>Description:</h2>
-                <h5>{{offer.description}}</h5>
+            <div>
+                <h3>Description:</h3>
+                <h6 class="offset">{{offer.description}}</h6>
+            </div>
+
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModalHorizontal">Add comment</button>
+
+            <ul *ngFor="let comment of offer.comments">
+                <li>{{comment.author}}: {{comment.text}}</li>
+            </ul>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Commment
+                            </h4>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <input type="text" [(ngModel)]="comment" class="form-control" name="comment" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button (click)="onAddComment()" class="btn btn-default" data-dismiss="modal">Add coment</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</main>
+</div>

@@ -32,15 +32,15 @@ const offersController = ({ users, offers }, _) => {
             const { comment } = req.body;
             const offerId = req.params.id;
 
-            comment.author = {
-                username: req.user.username,
-            }
+            comment.author = req.user.username;
+            comment.authorPictureUrl = req.user.profulePictureUrl;
 
             return offers.addComment(offerId, comment)
                 .then((result) => {
                     return res.status(201).send({ success: true, offer: result })
                 })
                 .catch((err) => {
+                    console.log(err);
                     return res
                         .status(400)
                         .send({ success: false, err, });

@@ -32,7 +32,7 @@
         <ul class="navbar-nav navbar-sidenav ml-auto" id="exampleAccordion">
             <li *ngIf="isUserLogged==true" class="nav-item">
                 <a class="nav-link " [class.active]="activeItem=='register' " [routerLink]="[ '/auth/register'] ">
-                    <img src="{{profilePicture}}" alt="pic" class="profile-pic-small img-responsive img-thumbnail"> {{username}}
+                    <img src="{{profilePicture}}" alt="pic" class="profile-pic-small img-responsive rounded"> {{username}}
                     <span class="nav-link-text "></span>
                 </a>
             </li>
