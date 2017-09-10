@@ -6,8 +6,9 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
-import { Component, OnInit, Output, EventEmitter, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterContentInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,40 +16,47 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./edit-profile.component.css']
 })
 
-export class EditProfileComponent implements OnInit, AfterContentInit {
+export class EditProfileComponent implements OnInit, AfterContentInit, OnDestroy {
   public user: User;
   public profilePictureUrl: string;
+  private subscriptions: Subscription[];
 
   constructor(
     private readonly router: Router,
     private readonly usersService: UsersService,
     private readonly fileUploader: FileUploaderService,
     private readonly notificationService: NotificationService,
-    private readonly userStorageService: UserStorageService) { }
+    private readonly userStorageService: UserStorageService) {
+  }
 
   ngOnInit() {
+    this.subscriptions = [];
     this.user = new User();
 
-    this.usersService.getLoggedUserInfo()
+    const subscription = this.usersService.getLoggedUserInfo()
       .map((r) => r.json())
       .subscribe((response) => {
         this.user = response.user;
       }, (err) => {
       });
+
+    this.subscriptions.push(subscription);
   }
 
   onSubmit(): void {
-    this.usersService.updateUserInfo(this.user)
+    const sub = this.usersService.updateUserInfo(this.user)
       .map(r => r.json())
       .subscribe((response: any) => {
         this.userStorageService.setUserInfo(this.user);
         this.notificationService.showSuccess('Your profile changes have been saved!');
       }, (err) => {
       });
+
+    this.subscriptions.push(sub);
   }
 
   onChange(files: File[]): void {
-    this.fileUploader.uploadFile(files)
+    const sub = this.fileUploader.uploadFile(files)
       .map(r => r.json())
       .subscribe((response: any) => {
         const { filesUrls } = response;
@@ -57,9 +65,17 @@ export class EditProfileComponent implements OnInit, AfterContentInit {
       }, (err) => {
         console.log(err);
       });
+
+    this.subscriptions.push(sub);
   }
 
   ngAfterContentInit(): void {
     this.notificationService.showInfo('Please fill out all the fields in order to update your profile');
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => {
+      s.unsubscribe();
+    });
   }
 }

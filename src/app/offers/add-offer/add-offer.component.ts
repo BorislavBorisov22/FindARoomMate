@@ -1,9 +1,10 @@
+import { Subscription } from 'rxjs/Subscription';
 import { NotificationService } from './../../services/notification.service';
 import { FileUploaderService } from './../../services/file-uploader.service';
 import { OffersService } from './../../services/offers.service';
 import { Offer } from './../../models/offer.model';
 import { Router } from '@angular/router';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
@@ -12,8 +13,9 @@ import 'rxjs/add/operator/map';
   templateUrl: './add-offer.component.html',
   styleUrls: ['./add-offer.component.css']
 })
-export class AddOfferComponent implements OnInit, AfterContentInit {
+export class AddOfferComponent implements OnInit, AfterContentInit, OnDestroy {
   offer: Offer;
+  private subscriptions: Subscription[];
 
   constructor(
     private readonly offersService: OffersService,
@@ -27,7 +29,7 @@ export class AddOfferComponent implements OnInit, AfterContentInit {
   }
 
   onAddSubmit(): void {
-    this.offersService.addOffer(this.offer)
+    const sub = this.offersService.addOffer(this.offer)
       .map(r => r.json())
       .subscribe((responseObject) => {
         this.offer = responseObject.offer;
@@ -36,10 +38,12 @@ export class AddOfferComponent implements OnInit, AfterContentInit {
         this.router.navigateByUrl('/offers/all');
       }, (err) => {
       });
+
+    this.subscriptions.push(sub);
   }
 
   onRoomPictureUpload(files: File[], attachOnPropery: string): void {
-    this.fileUploader.uploadFile(files)
+    const sub = this.fileUploader.uploadFile(files)
       .map(r => r.json())
       .subscribe(response => {
         const { filesUrls } = response;
@@ -47,9 +51,15 @@ export class AddOfferComponent implements OnInit, AfterContentInit {
       }, (err) => {
         console.log(err);
       });
+
+    this.subscriptions.push(sub);
   }
 
   ngAfterContentInit(): void {
     this.notifiacator.showInfo('Please fill out all fields in order to add an offer!');
+  }
+
+  ngOnDestroy(): void {
+    return this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }

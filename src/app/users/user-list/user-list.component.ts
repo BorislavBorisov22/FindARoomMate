@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs/Subscription';
 import { NotificationService } from './../../services/notification.service';
 import { UsersService } from './../../services/users.service';
 import { UserStorageService } from './../../services/user-storage.service';
 import { User } from './../../models/user.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -11,16 +12,18 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./user-list.component.css']
 })
 
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
   @Input()
   user: User;
+
+  private rateUserSubscription: Subscription;
 
   constructor(private readonly usersStorageService: UserStorageService,
     private readonly usersService: UsersService,
     private readonly notificator: NotificationService) { }
 
   ngOnInit() {
-    console.log(this.user);
+    this.rateUserSubscription = new Subscription();
   }
 
   isUserRated(user: User): boolean {
@@ -39,10 +42,14 @@ export class UserListComponent implements OnInit {
     }
 
     const dislike = this.isUserRated(this.user);
-    this.usersService.rateUser(this.user, dislike)
+    this.rateUserSubscription = this.usersService.rateUser(this.user, dislike)
       .map((r) => r.json())
       .subscribe((response) => {
         this.user = response.user;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.rateUserSubscription.unsubscribe();
   }
 }

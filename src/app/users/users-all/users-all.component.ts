@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserStorageService } from './../../services/user-storage.service';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 const USERS_ALL_URL = '/user/all';
@@ -15,12 +16,13 @@ const DEFAULT_PAGE = 1;
   styleUrls: ['./users-all.component.css']
 })
 
-export class UsersAllComponent implements OnInit {
-
+export class UsersAllComponent implements OnInit, OnDestroy {
   users: User[];
   currentPage: number;
   pageSize: number;
   totalElementsCount: number;
+
+  private subscriptions: Subscription[];
 
   constructor(private readonly usersService: UsersService,
     private readonly usersStorageService: UserStorageService,
@@ -29,14 +31,17 @@ export class UsersAllComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.subscriptions = [];
     this.users = [];
     this.getUsersForCurrentPage();
-    this.activatedRoute.queryParams
+    const sub = this.activatedRoute.queryParams
       .subscribe((params) => {
         this.currentPage = Number(params.page || DEFAULT_PAGE);
         this.pageSize = Number(params.size || DEFAULT_PAGE_SIZE);
         this.getUsersForCurrentPage();
       });
+
+    this.subscriptions.push(sub);
   }
 
   onPageChanged(page: number): void {
@@ -48,7 +53,7 @@ export class UsersAllComponent implements OnInit {
 
   getUsersForCurrentPage() {
     this.users = [];
-    this.usersService.getAllUsers()
+    const sub = this.usersService.getAllUsers()
       .map(x => x.json())
       .subscribe((responseUsers: any) => {
         this.totalElementsCount = responseUsers.length;
@@ -60,47 +65,11 @@ export class UsersAllComponent implements OnInit {
 
         this.users = responseUsers.reverse().splice((this.currentPage - 1) * this.pageSize, this.pageSize);
       });
+
+    this.subscriptions.push(sub);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }
-
-/*
-constructor(
-    private readonly offersService: OffersService,
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router
-  ) { }
-
-  ngOnInit() {
-    this.getOffersForCurrentPage();
-    this.activatedRoute.queryParams
-      .subscribe((params) => {
-        this.currentPage = Number(params.page || DEFAULT_PAGE);
-        this.pageSize = Number(params.size || DEFAULT_PAGE_SIZE);
-        this.getOffersForCurrentPage();
-      });
-  }
-
-  onPageChanged(page: number): void {
-    this.currentPage = page;
-    this.pageSize = this.pageSize === 0 ? DEFAULT_PAGE_SIZE : this.pageSize;
-    const url = ALL_OFFERS_URL + '?page=' + this.currentPage + '&size=' + this.pageSize;
-    this.router.navigateByUrl(url);
-  }
-
-  getOffersForCurrentPage(): void {
-    this.offers = new Array<Offer>();
-    this.offersService.getAllOffers()
-      .map((r) => r.json())
-      .subscribe((response) => {
-        this.totalElementsCount = response.offers.length;
-
-        const lastPage = Math.ceil(this.totalElementsCount / this.pageSize);
-        if (this.currentPage > lastPage || this.currentPage < 1) {
-          this.currentPage = 1;
-        }
-
-        this.offers = response.offers.reverse().splice((this.currentPage - 1) * this.pageSize, this.pageSize);
-      }, (err) => {
-      });
-  }
-*/

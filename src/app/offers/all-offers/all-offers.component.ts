@@ -1,7 +1,8 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Offer } from './../../models/offer.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OffersService } from './../../services/offers.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 const DEFAULT_PAGE_SIZE = 12;
 const DEFAULT_PAGE = 1;
@@ -12,12 +13,14 @@ const ALL_OFFERS_URL = '/offers/all';
   templateUrl: './all-offers.component.html',
   styleUrls: ['./all-offers.component.css']
 })
-export class AllOffersComponent implements OnInit {
+export class AllOffersComponent implements OnInit, OnDestroy {
   offers: Offer[];
 
   currentPage = DEFAULT_PAGE;
   pageSize = DEFAULT_PAGE_SIZE;
   totalElementsCount: number;
+
+  private subsriptions: Subscription[];
 
   constructor(
     private readonly offersService: OffersService,
@@ -26,13 +29,16 @@ export class AllOffersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.subsriptions = [];
     this.getOffersForCurrentPage();
-    this.activatedRoute.queryParams
+    const sub = this.activatedRoute.queryParams
       .subscribe((params) => {
         this.currentPage = Number(params.page || DEFAULT_PAGE);
         this.pageSize = Number(params.size || DEFAULT_PAGE_SIZE);
         this.getOffersForCurrentPage();
       });
+
+    this.subsriptions.push(sub);
   }
 
   onPageChanged(page: number): void {
@@ -44,7 +50,7 @@ export class AllOffersComponent implements OnInit {
 
   getOffersForCurrentPage(): void {
     this.offers = new Array<Offer>();
-    this.offersService.getAllOffers()
+    const sub = this.offersService.getAllOffers()
       .map((r) => r.json())
       .subscribe((response) => {
         this.totalElementsCount = response.offers.length;
@@ -57,5 +63,11 @@ export class AllOffersComponent implements OnInit {
         this.offers = response.offers.reverse().splice((this.currentPage - 1) * this.pageSize, this.pageSize);
       }, (err) => {
       });
+
+    this.subsriptions.push(sub);
+  }
+
+  ngOnDestroy(): void {
+    this.subsriptions.forEach((s) => s.unsubscribe());
   }
 }
