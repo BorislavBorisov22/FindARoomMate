@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UsersAllComponent } from './users-all/users-all.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { UsersAllComponent } from './users-all/users-all.component';
   declarations: [
     EditProfileComponent,
     UsersAllComponent,
+    UserListComponent,
   ]
 })
 export class UsersModule { }
