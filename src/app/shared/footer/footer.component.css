@@ -1,70 +1,70 @@
-footer {
-    background-color: #0c1a1e;
-    min-height: 100px;
-    font-family: 'Open Sans', sans-serif;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-}
-
-.footerleft {
-    margin-top: 25px;
-    padding: 0 36px;
-}
-
-.logofooter {
-    margin-bottom: 10px;
-    font-size: 25px;
-    color: #fff;
-    font-weight: 700;
-}
-
-.footerleft p {
-    color: #fff;
-    font-size: 12px;
-    font-family: 'Open Sans', sans-serif;
-    margin-bottom: 15px;
-}
-
-.footerleft p i {
-    width: 20px;
-    color: #999;
-}
-
-.copyright {
-    min-height: 40px;
-    background-color: #000000;
-}
-
-.copyright p {
-    text-align: left;
-    color: #FFF;
-    padding: 10px 0;
-    margin-bottom: 0;
-}
-
-.footer-icons {
-    padding-top: 25px;
-    padding-bottom: 10px;
-}
-
-@media screen and (max-width: 1280px) {
-    footer {
-        background-color: #0c1a1e;
-        min-height: 50px;
-        font-family: 'Open Sans', sans-serif;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        overflow: hidden;
-        zoom: 0.5;
-    }
-    .footer-icons {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .footer-hide {
-        display: none;
-    }
-}
+ footer {
+     background-color: #0c1a1e;
+     min-height: 100px;
+     font-family: 'Open Sans', sans-serif;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     overflow: hidden;
+ }
+ 
+ .footerleft {
+     margin-top: 25px;
+     padding: 0 36px;
+ }
+ 
+ .logofooter {
+     margin-bottom: 10px;
+     font-size: 25px;
+     color: #fff;
+     font-weight: 700;
+ }
+ 
+ .footerleft p {
+     color: #fff;
+     font-size: 12px;
+     font-family: 'Open Sans', sans-serif;
+     margin-bottom: 15px;
+ }
+ 
+ .footerleft p i {
+     width: 20px;
+     color: #999;
+ }
+ 
+ .copyright {
+     min-height: 40px;
+     background-color: #000000;
+ }
+ 
+ .copyright p {
+     text-align: left;
+     color: #FFF;
+     padding: 10px 0;
+     margin-bottom: 0;
+ }
+ 
+ .footer-icons {
+     padding-top: 25px;
+     padding-bottom: 10px;
+ }
+ 
+ @media screen and (max-width: 1280px) {
+     footer {
+         background-color: #0c1a1e;
+         min-height: 50px;
+         font-family: 'Open Sans', sans-serif;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         overflow: hidden;
+         zoom: 0.5;
+     }
+     .footer-icons {
+         padding-top: 5px;
+         padding-bottom: 5px;
+     }
+     .footer-hide {
+         display: none;
+     }
+ }

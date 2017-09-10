@@ -60,9 +60,5 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPages();
-    console.log(this.totalElementsCount, 'total');
-    console.log(this.currentPage, 'current');
-    console.log(this.lastPage, 'last');
-    console.log(this.pages);
   }
 }

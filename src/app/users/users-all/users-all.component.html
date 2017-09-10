@@ -18,3 +18,7 @@
         </div>
     </section>
 </main>
+
+<div *ngIf="totalElementsCount">
+    <app-pagination (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount" [size]="pageSize"></app-pagination>
+</div>

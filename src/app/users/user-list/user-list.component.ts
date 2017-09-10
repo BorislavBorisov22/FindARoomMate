@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { UsersService } from './../../services/users.service';
 import { UserStorageService } from './../../services/user-storage.service';
 import { User } from './../../models/user.model';
@@ -14,7 +15,8 @@ export class UserListComponent implements OnInit {
   user: User;
 
   constructor(private readonly usersStorageService: UserStorageService,
-    private readonly usersService: UsersService) { }
+    private readonly usersService: UsersService,
+    private readonly notificator: NotificationService) { }
 
   ngOnInit() {
     console.log(this.user);
@@ -30,6 +32,11 @@ export class UserListComponent implements OnInit {
   }
 
   rateUser(): void {
+    if (!this.usersStorageService.isUserLogged()) {
+      this.notificator.showError('You must be logged in order to rate a user!');
+      return;
+    }
+
     const dislike = this.isUserRated(this.user);
     this.usersService.rateUser(this.user, dislike)
       .map((r) => r.json())
