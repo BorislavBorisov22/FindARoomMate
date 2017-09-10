@@ -22,6 +22,10 @@ const usersController = ({ users }, utils) => {
         getUsers(req, res) {
             return users.getAll()
                 .then((users) => {
+                    users = users.map(x => {
+                        delete x.password;
+                        return x;
+                    });
                     return res.send(users);
                 });
         },
@@ -57,19 +61,20 @@ const usersController = ({ users }, utils) => {
                     });
                 })
                 .catch((err) => {
-                    console.log(err, 'error, error');
                     res.status(400).send(({ success: false, message: 'Invalid Credentials' }))
                 });
         },
         rateUser(req, res) {
             const userToRateId = req.params.id;
             const raterUsername = req.user.username;
+            const dislike = req.body.dislike;
 
-            users.rateUser(userToRateId, raterUsername)
+            users.rateUser(userToRateId, raterUsername, dislike)
                 .then((result) => {
-                    return res.send({ success: true, response: result });
+                    return res.send({ success: true, user: result });
                 })
                 .catch((err) => {
+                    console.log(err, 'rateError');
                     return res
                         .status(400)
                         .send({ success: false, err });
@@ -77,7 +82,6 @@ const usersController = ({ users }, utils) => {
         },
         getProfileInfo(req, res) {
             const user = req.user;
-
             delete user.password;
             return res.json({ success: true, user, });
         },

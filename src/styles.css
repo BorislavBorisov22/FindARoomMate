@@ -10,4 +10,5 @@ main {
 
 body {
     background-image: url('../server/uploads/background.png');
+    overflow-x: hidden;
 }

@@ -6,7 +6,6 @@ const DEFAULT_CONTENT_TYPE = 'application/json';
 
 @Injectable()
 export class HttpRequesterService {
-
   constructor(private http: Http) {
   }
 

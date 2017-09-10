@@ -6,4 +6,7 @@ export class User {
     profilePictureUrl?: string;
     description?: string;
     email?: string;
+    rating: number;
+    ratingUsers: string[];
+    _id?: string;
 }
