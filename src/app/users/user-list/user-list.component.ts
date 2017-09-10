@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
+
 export class UserListComponent implements OnInit {
   @Input()
   user: User;
