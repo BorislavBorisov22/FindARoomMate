@@ -6,7 +6,7 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="text-center">
                     <img class="avatar img-circle img-thumbnail" src="{{offer.image1}}" alt="avatar">
-                    <h6>Room picture</h6>
+                    <h6>Room pictures</h6>
                     <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputMain.files, 'image1')" type="file" #updateProfilePictureInputMain class="text-center center-block well well-sm">
                     <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputSecond.files, 'image2')" type="file" #updateProfilePictureInputSecond class="text-center center-block well well-sm">
                     <input required value="You main image" (change)="onRoomPictureUpload(updateProfilePictureInputThird.files, 'image3')" type="file" #updateProfilePictureInputThird class="text-center center-block well well-sm">
@@ -18,24 +18,24 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Title</label>
                         <div class="col-lg-8">
-                            <input class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
+                            <input required class="form-control input-lg" [(ngModel)]="offer.title" placeholder="Title" name="title" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Rent:</label>
                         <div class="input-group col-lg-8">
                             <span class="input-group-addon">$</span>
-                            <input [(ngModel)]="offer.price" placeholder="Price" name="price" type="text" class="form-control" min="10" max="1200">
+                            <input required [(ngModel)]="offer.price" placeholder="Price" name="price" type="text" class="form-control" min="10" max="1200">
                         </div>
                     </div>
                     <div class="form-group col-lg-8">
                         <label for="exampleTextarea">Description</label>
-                        <textarea [(ngModel)]="offer.description" placeholder="Description" name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        <textarea required [(ngModel)]="offer.description" placeholder="Description" name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
                     </div>
                     <div class="form-group col-lg-8">
                         <label class="control-label">Address</label>
                         <div>
-                            <input [(ngModel)]="offer.address" name="address" class="form-control" type="text" placeholder="Address">
+                            <input required [(ngModel)]="offer.address" name="address" class="form-control" type="text" placeholder="Address">
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +43,7 @@
                         <div class="col-md-8">
                             <button class="btn btn-primary" type="submit">Upload Offer</button>
                             <span></span>
-                            <input class="btn btn-default" value="Cancel" type="reset">
+                            <input required class="btn btn-default" value="Cancel" type="reset">
                         </div>
                     </div>
                 </div>

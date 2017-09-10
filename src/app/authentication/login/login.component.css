@@ -1,3 +1,19 @@
 #login-container {
-    margin-bottom: 9.5%;
+    margin-bottom: 10%;
+}
+
+input.ng-invalid {
+    border-color: red;
+}
+
+input.ng-valid {
+    border-color: green;
+}
+
+.login-button {
+    margin-top: 5px;
+}
+
+.validation-feedback {
+    color: red;
 }

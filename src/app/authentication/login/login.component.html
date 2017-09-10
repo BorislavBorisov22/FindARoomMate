@@ -4,15 +4,30 @@
             <div class="col-md-6 col-lg-4 mx-auto">
                 <div class="card card-body">
                     <h3 class="text-center mb-4">Sing in</h3>
-                    <form (ngSubmit)='onLoginSubmit()'>
-                        <div class="form-group has-error">
-                            <input class="form-control input-lg" [(ngModel)]="user.username" placeholder="First name" name="firstName" type="text">
+                    <form (ngSubmit)='onLoginSubmit()' #loginForm=ngForm>
+                        <div class="form-group">
+                            <div class="input-group has-error">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input #usernameInput=ngModel required minLength="4" class="form-control input-lg" [(ngModel)]="user.username" placeholder="Username" name="firstName" type="text">
+                            </div>
+                            <label class="validation-feedback" *ngIf="(usernameInput.errors && (usernameInput.dirty || usernameInput.touched)) || usernameInput.errors && mouseover">
+                                        <span *ngIf="usernameInput.errors.required">Username is required</span>
+                                        <span *ngIf="usernameInput.errors.minlength">Username must be at least 4 characters </span>
+                            </label>
                         </div>
 
                         <div class="form-group has-success">
-                            <input class="form-control input-lg" [(ngModel)]="user.password" placeholder="Password" name="password" type="password">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input #passwordInput=ngModel class="form-control input-lg" [(ngModel)]="user.password" placeholder="Password" name="password" type="password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$">
+                            </div>
+                            <label class="validation-feedback" *ngIf="(passwordInput.errors && (passwordInput.dirty || passwordInput.touched)) || passwordInput.errors && mouseover">
+                                    <span *ngIf="passwordInput.errors.required">Password is required</span>
+                                    <span *ngIf="passwordInput.errors.minlength">Password must be 8 characters long, we need another {{passwordInput.errors.minlength.requiredLength - passwordInput.errors.minlength.actualLength}} characters </span>
+                                    <span *ngIf="passwordInput.errors.pattern">Password must contain at least one uppercase letter and at least one number.</span>
+                            </label>
                         </div>
-                        <input class="btn btn-lg btn-primary btn-block" value="Sign Me In" type="submit">
+                        <input [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" value="Sign Me In" type="submit">
                     </form>
                 </div>
             </div>

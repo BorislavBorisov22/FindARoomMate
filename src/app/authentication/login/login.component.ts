@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 })
 
 export class LoginComponent implements OnInit {
-  user: User;
+  public user: User;
 
   constructor(
     private usersService: UsersService,

@@ -16,6 +16,7 @@ const usersController = ({ users }, utils) => {
                     res.send({ success: true, message: `user ${user.username} created` });
                 })
                 .catch((errMessage) => {
+                    console.log(errMessage);
                     res.status(400).send({ success: false, message: errMessage })
                 });
         },

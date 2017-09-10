@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms/';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -16,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule,
     CommonModule,
     NgbModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ReactiveFormsModule,
   ],
   declarations: [NavigationComponent, PaginationComponent, FooterComponent],
   exports: [
@@ -28,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     AngularFontAwesomeModule,
     PaginationComponent,
     FooterComponent,
+    ReactiveFormsModule
   ]
 })
 
