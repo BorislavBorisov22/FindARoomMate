@@ -1,3 +1,4 @@
+import { UserStorageService } from './../../services/user-storage.service';
 import { NotificationService } from './../../services/notification.service';
 import { ActivatedRoute } from '@angular/router';
 import { OffersService } from './../../services/offers.service';
@@ -14,18 +15,20 @@ import { Router } from '@angular/router';
 export class OfferInfoComponent implements OnInit {
   offer: Offer;
   comment: string;
+  isUserLogged: boolean;
 
   constructor(
     private readonly offersService: OffersService,
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly notificator: NotificationService
+    private readonly notificator: NotificationService,
+    private readonly userStorageService: UserStorageService,
   ) { }
 
   ngOnInit() {
     this.offer = new Offer();
-
     const offerId = this.activatedRoute.snapshot.params.id;
+    this.isUserLogged = this.userStorageService.isUserLogged();
 
     this.offersService.getOfferInfo(offerId)
       .map((r) => r.json())
