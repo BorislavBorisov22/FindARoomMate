@@ -52,7 +52,7 @@
             <div *ngIf="offer.comments" class = "comments-container-div">
                 <div class="comments-container">
                     <h3>Comments:</h3>
-                    <ul id="comments-list" class="comments-list" *ngFor="let comment of offer.comments">
+                    <ul id="comments-list" class="comments-list" *ngFor="let comment of offer.comments" >
                         <li>
                             <div class="comment-main-level">
                                 <div class="comment-avatar"><img src="{{comment.authorPictureUrl}}" alt=""></div>

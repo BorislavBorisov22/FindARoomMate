@@ -18,7 +18,7 @@ import { AllOffersComponent } from './all-offers/all-offers.component';
     AddOfferComponent,
     AllOffersComponent,
     OfferInfoComponent,
-    SortPipe
+    SortPipe,
 ]
 })
 export class OffersModule { }
