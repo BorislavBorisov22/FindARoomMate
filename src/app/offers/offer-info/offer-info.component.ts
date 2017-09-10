@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { ActivatedRoute } from '@angular/router';
 import { OffersService } from './../../services/offers.service';
 import { Offer } from './../../models/offer.model';
@@ -18,6 +19,7 @@ export class OfferInfoComponent implements OnInit {
     private readonly offersService: OffersService,
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly notificator: NotificationService
   ) { }
 
   ngOnInit() {
@@ -33,14 +35,14 @@ export class OfferInfoComponent implements OnInit {
       });
   }
 
-   onAddComment() {
+  onAddComment() {
     const offerId = this.activatedRoute.snapshot.params.id;
     this.offersService.addComment(this.comment, offerId)
       .map(r => r.json())
-      .subscribe((responseObject) => {
-        this.comment = responseObject.comment;
+      .subscribe((responseObject: any) => {
+        this.offer = responseObject.offer;
 
-        this.router.navigateByUrl('/offers/' + offerId);
+        this.notificator.showSuccess('Comment has been added to offer.');
       }, (err) => {
       });
   }

@@ -1,3 +1,4 @@
+import { Comment } from './../models/comment.model';
 import { UserStorageService } from './user-storage.service';
 import { Offer } from './../models/offer.model';
 import { Response } from '@angular/http';
@@ -39,8 +40,24 @@ export class OffersService {
     return this.httpRequester.get(url, {});
   }
 
-  addComment(comment: string, offerId: string) {
+  addComment(commentText: string, offerId: string) {
     const url = OFFER_INFO_URL + offerId;
-    return this.httpRequester.put(url, comment, {});
+
+    const loggedUsername = this.userStorageService.getLoggedUserUsername();
+    const userPic = this.userStorageService.getLoggedUserProfilePicture();
+
+    const commentToAdd = new Comment(commentText);
+
+    const body = {
+      comment: commentToAdd,
+    };
+
+    const token = this.userStorageService.getLoggedUserToken();
+
+    const headers = {
+      token,
+    };
+
+    return this.httpRequester.put(url, body, headers);
   }
 }

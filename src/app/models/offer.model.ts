@@ -1,3 +1,4 @@
+import { Comment } from './comment.models';
 import { OfferAuthor } from './offer-author.model';
 const DEFAULT_OFFER_IMAGE = 'http://nursevibe.com/images/clients-pic/2.png';
 
@@ -11,7 +12,7 @@ export class Offer {
     price: number;
     address: string;
     author?: OfferAuthor;
-    comments?: string[];
+    comments?: Comment[];
 
     constructor() {
         this.image1 = DEFAULT_OFFER_IMAGE;

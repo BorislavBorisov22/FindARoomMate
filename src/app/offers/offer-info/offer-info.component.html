@@ -18,13 +18,13 @@
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
             <div class="descr">
@@ -49,9 +49,11 @@
                 <h6 class="offset">{{offer.description}}</h6>
             </div>
 
-            <button class="btn btn-default" data-toggle="modal" data-target="#myModalHorizontal">
-    Add comment
-</button>
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModalHorizontal">Add comment</button>
+
+            <ul *ngFor="let comment of offer.comments">
+                <li>{{comment.author}}: {{comment.text}}</li>
+            </ul>
 
             <!-- Modal -->
             <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -70,7 +72,6 @@
 
                         <!-- Modal Body -->
                         <div class="modal-body">
-
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
                                     <div class="col-sm-10">
