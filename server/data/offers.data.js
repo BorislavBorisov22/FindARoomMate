@@ -17,7 +17,6 @@ class OffersData extends Data {
             }
         })
     }
-
     addComment(offerId, comment) {
         let targetOffer = null;
         return this.findById(offerId)

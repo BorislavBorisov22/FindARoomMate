@@ -12,12 +12,12 @@ class Offer {
             return Promise.reject('Offer title must be a valid string!');
         }
 
-        if (!Array.isArray(offer.pictureUrls)) {
+        if (typeof offer.image1 != 'string') {
             return Promise.reject('Offer pictureUrls must be a of type array!');
         }
 
-        if (Number.isNaN(Number(offer.rentPrice))) {
-            return Promise.reject('offer rentPrice must be a of type number!');
+        if (Number.isNaN(Number(offer.price))) {
+            return Promise.reject('offer price must be a of type number!');
         }
 
         return Promise.resolve(offer);
