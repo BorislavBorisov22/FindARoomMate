@@ -1,24 +1,27 @@
-<main>
-    <section class="row-section">
-        <div class="container">
-            <div class="row">
-                <h1 class="text-center">
-                    <a class="text-color-primary" href="http://grafreez.com">
+<div class = "container">
+    <main>
+        <section class="row-section">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-center">
+                        <a class="text-color-primary" href="http://grafreez.com">
                     Users
                     </a>
-                </h1>
+                    </h1>
+                </div>
+                <div class="col-md-10 offset-md-1 row-block">
+                    <ul>
+                        <li *ngFor="let user of users">
+                            <app-user-list [user]="user"></app-user-list>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-10 offset-md-1 row-block">
-                <ul>
-                    <li *ngFor="let user of users">
-                        <app-user-list [user]="user"></app-user-list>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
-<div *ngIf="totalElementsCount">
-    <app-pagination (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount" [size]="pageSize"></app-pagination>
+    <div class="pagination-class" *ngIf="totalElementsCount">
+        <app-pagination id="pagination" (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount"
+            [size]="pageSize"></app-pagination>
+    </div>
 </div>
