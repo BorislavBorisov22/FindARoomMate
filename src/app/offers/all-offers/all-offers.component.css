@@ -3,6 +3,10 @@
     margin-top: 40px;
 }
 
+.left{
+    float:left;
+}
+
 .panel {
     position: relative;
     overflow: hidden;
@@ -87,7 +91,7 @@
 }
 
 .panel .panel-footer {
-    padding: 8px !important;
+    padding: 20px !important;
     background-color: #f9f9f9 !important;
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
@@ -133,10 +137,6 @@
     font: 400 normal 1.125em "Roboto", Arial, Verdana, sans-serif;
 }
 
-.card img {
-    height: 180px;
-    width: 318px;
-}
 
 .author-pic {
     width: 40px !important;
