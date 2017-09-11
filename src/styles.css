@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.hidden {
+    display: none;
+}
+
+main {
+    margin-top: 7%;
+}
+
+body {
+    background-image: url('../server/uploads/background.png');
+    overflow-x: hidden;
+}

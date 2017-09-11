@@ -55,29 +55,42 @@ class UsersData extends Data {
             });
     }
 
-    rateUser(userId, raterUsername) {
+    rateUser(userId, raterUsername, dislike) {
         if (typeof raterUsername !== 'string') {
             return Promise.reject('Rater username must be a string!');
         }
 
-        this.findById(userId)
+        let targetUser;
+        return this.findById(userId)
             .then((foundUser) => {
                 if (!foundUser) {
                     return Promise.reject('Invalid userRate id!');
                 }
 
-                const hasAlreadyRated = foundUser.ratingUsers
-                    .findIndex(x => x.username == raterUsername) >= 0;
+                targetUser = foundUser;
+                const index = foundUser.ratingUsers.findIndex(x => x == raterUsername);
+                const hasAlreadyRated = index >= 0;
 
-                if (hasAlreadyCommented) {
-                    return Promise.reject('User has already been rated!');
+                if (!dislike) {
+
+                    if (hasAlreadyRated) {
+                        return Promise.reject('User has already been rated!');
+                    }
+
+                    foundUser.rating += 1;
+                    foundUser.ratingUsers.push(raterUsername);
+                } else {
+                    if (hasAlreadyRated) {
+                        foundUser.rating -= 1;
+                        foundUser.ratingUsers.splice(index, 1);
+                    } else {
+                        return Promise.reject('User has not been been rated!');
+                    }
                 }
 
-                foundUser.rating += 1;
-                foundUser.ratingUsers.push(raterUsername);
-
                 return this.update(foundUser);
-            });
+            })
+            .then(() => targetUser);
     }
 
     getByUsername(username) {

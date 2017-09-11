@@ -1,0 +1,24 @@
+<div class="container">
+    <main>
+        <section class="row-section">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-center">
+                        <i class="fa fa-globe fa-2x" aria-hidden="true"></i> Users
+                    </h1>
+                </div>
+                <div class="col-md-10 offset-md-1 row-block">
+                    <ul>
+                        <li *ngFor="let user of users">
+                            <app-user-list [user]="user"></app-user-list>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="pagination-class" *ngIf="totalElementsCount">
+        <app-pagination id="pagination" (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount" [size]="pageSize"></app-pagination>
+    </div>
+</div>

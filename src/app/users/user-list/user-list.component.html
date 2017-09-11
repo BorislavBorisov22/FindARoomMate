@@ -1,0 +1,16 @@
+<div class="media">
+    <div class="media-left align-self-center">
+        <img class="rounded-circle" src="{{user.profilePictureUrl}}">
+    </div>
+    <div class="media-body">
+        <h4>{{user.username}}</h4>
+        <p>{{user.description}}</p>
+    </div>
+    <div class="media-right align-self-center">
+        {{user.rating}}
+        <button (click)="rateUser()" class="btn btn-default">
+            <i *ngIf="isUserRated(user) == true" class="fa fa-heart" aria-hidden="true"></i>
+            <i *ngIf="isUserRated(user) == false" class="fa fa-heart-o"></i>
+        </button>
+    </div>
+</div>

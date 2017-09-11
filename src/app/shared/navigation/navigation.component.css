@@ -1,0 +1,29 @@
+ .dropdown {
+     width: 120px;
+ }
+ 
+ .dropdown-menu {
+     width: 120px;
+ }
+ /* .dropdown-link {
+     text-align: center;
+ }
+  */
+ 
+ .navbar-right {
+     float: right !important;
+ }
+ 
+ .profile-pic-small {
+     width: 30px;
+     height: 30px;
+     float: left;
+     margin-right: 5px;
+ }
+ 
+ .navbar-brand {
+     color: #33a1d5;
+     font-family: Mistral, Brush Script MT, Rage Italic;
+     font-weight: bold;
+     font-size: 26px;
+ }

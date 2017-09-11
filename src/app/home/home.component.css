@@ -1,0 +1,53 @@
+.main-content {
+    margin-top: 5%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 580px;
+}
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+
+.video-container {
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    height: 640px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.home-video {
+    position: absolute;
+}
+
+.poster img {
+    width: 100%;
+    bottom: 0;
+}
+
+.video-container .filter {
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+
+.video-container video.fillWidth {
+    width: 100%;
+}

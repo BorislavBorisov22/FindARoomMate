@@ -1,0 +1,53 @@
+<!-- Reference: https://github.com/ashleydw/lightbox/ -->
+<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+<main>
+    <div class="container mt40">
+        <section class="row">
+            <article class="col-xs-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let offer of (offers|sort)">
+                 <div class="card panel panel-default">
+                    <div class="panel-body offer-image ">
+                        <a [routerLink]="['/offers/', offer._id]" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
+                            <img class="card-img-top custom-card offer-image" src="{{offer.image1}}" alt="Image" />
+                            <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                        </a>
+                    </div>
+                    <div class="panel-footer card-block">
+                        <h5><a href="#" class="a" title="Image">{{offer.title}}</a></h5>
+                        <p class="a">
+                            <i class="fa fa-money left" aria-hidden="true"> {{offer.price}}</i> 
+                            <i class="fa fa-map-marker card-location" aria-hidden="true"> {{offer.address}}</i>  
+                        </p>
+                    </div>
+                </div> 
+
+
+                <!-- <div class="card panel panel-default zoom" style="width: 20rem;">
+                    <div class="panel-body offer-image zoom">
+                        <img class="card-img-top custom-card offer-image" src="{{offer.image1}}" alt="Card image cap">
+                        <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">{{offer.title}}</h4>
+                        <p class="a">
+                            <i class="fa fa-money" aria-hidden="true"></i> {{offer.price}}
+                            <span class="card-location">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i> {{offer.address}} 
+                            </span>
+                        </p>
+                        <p class="card-text">
+                            {{offer.description}}
+                        </p>
+                        <a href="#" class="btn btn-primary" [routerLink]="['/offers/', offer._id]">Details</a>
+                    </div>
+                    <div class="card-footer">
+                        <img class="author-pic img-thumbnail" src="{{offer.author.profilePictureUrl}}"><small class="text-muted"> {{offer.author.username}}</small>
+                    </div>
+                </div> -->
+            </article>
+        </section>
+    </div>
+</main>
+
+<div *ngIf="totalElementsCount">
+    <app-pagination (pageChangedEmitter)="onPageChanged($event)" [currentPage]="currentPage" [totalElementsCount]="totalElementsCount" [size]="pageSize"></app-pagination>
+</div>

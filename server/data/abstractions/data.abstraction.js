@@ -45,9 +45,10 @@ class Data {
 
     add(model) {
         return this.validator.validateModel(model)
-            .then((resultModel) => {
-                return this.collection.insert(resultModel);
-            });
+             .then((resultModel) => {
+                console.log(resultModel)
+        return this.collection.insert(model);
+        });
     }
 
     update(model) {

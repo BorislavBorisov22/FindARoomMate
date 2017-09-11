@@ -17,10 +17,9 @@ class OffersData extends Data {
             }
         })
     }
-
     addComment(offerId, comment) {
         let targetOffer = null;
-        return this.collection.findById(id)
+        return this.findById(offerId)
             .then((offer) => {
                 if (!offer) {
                     return Promise.reject('No such offer found!');
@@ -28,12 +27,18 @@ class OffersData extends Data {
 
                 targetOffer = offer
 
-                return this.validate.validateComment(comment)
+                return this.validator.validateComment(comment)
             })
             .then((commentToAdd) => {
-                targetOffer.comments.add(commentToAdd);
+                if (!targetOffer.comments) {
+                    targetOffer.comments = [];
+                }
 
+                targetOffer.comments.push(commentToAdd);
                 return this.update(targetOffer);
+            })
+            .then(() => {
+                return targetOffer;
             });
     }
 }
