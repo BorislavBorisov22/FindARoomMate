@@ -10,7 +10,11 @@ export class AppPage {
   }
 
   clickOffersBtn() {
-    return element(by.className('offers-testing')).click();
+    return element(by.id('offers')).click();
+  }
+
+  navigateToUsersPage() {
+    return browser.get('/users/all');
   }
 
   register() {
@@ -22,6 +26,10 @@ export class AppPage {
     element(by.name('password')).sendKeys('123457890aa');
     element(by.name('terms')).click();
     return element(by.buttonText('Sign Me Up')).click();
+  }
+
+  logout() {
+    browser.get('/auth/logout');
   }
 
   registerbeforeLogin() {

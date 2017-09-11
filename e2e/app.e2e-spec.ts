@@ -35,9 +35,9 @@ describe('find-a-room-mate App', () => {
         page.login().then(() => {
           setTimeout(function () {
             expect(browser.getCurrentUrl()).toContain('/home');
-          }, 3000);
+          }, 2000);
         });
-      }, 3000);
+      }, 2000);
     });
   });
 });
