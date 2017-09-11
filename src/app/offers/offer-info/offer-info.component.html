@@ -31,18 +31,18 @@
         <div class="footer">
             <div *ngIf="offer.author" class="row">
                 <div class="info" class="col-xs-12 col-md-6">
-                    <h3>Author:</h3>
-                    <img class="offset profile-picture rounded" src="{{offer.author.profilePictureUrl}}" alt="pic">
-                    <h6 class="offset">{{offer.author.username}}</h6>
+                    <img class="offset img-thumbnail profile-picture rounded" src="{{offer.author.profilePictureUrl}}" alt="pic">
+                    <strong class="offset">{{offer.author.username}}</strong>
                 </div>
-                <div class="info" class="col-xs-12 col-md-6">
-                    <h3>Address:</h3>
-                    <h6 class="offset">{{offer.address}}</h6>
+                <div class="info" class="col-xs-12 col-md-6 pull-right">
+                    <h6 class="offset"><i class="fa fa-compass fa-2x" aria-hidden="true"></i> {{offer.address}}</h6>
                 </div>
             </div>
             <div class="description-div">
-                <h3 class="line-offset">Description:</h3>
+                <hr>
+                <h3 class="line-offset"><i class="fa fa-info-circle fa-3x" aria-hidden="true"></i> Description:</h3>
                 <h6 class="offset">{{offer.description}}</h6>
+                <hr>
             </div>
 
             <div *ngIf="offer.comments" class="comments-container-div">
