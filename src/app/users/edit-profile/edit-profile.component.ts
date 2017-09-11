@@ -27,10 +27,10 @@ export class EditProfileComponent implements OnInit, AfterContentInit, OnDestroy
     private readonly fileUploader: FileUploaderService,
     private readonly notificationService: NotificationService,
     private readonly userStorageService: UserStorageService) {
+    this.subscriptions = [];
   }
 
   ngOnInit() {
-    this.subscriptions = [];
     this.user = new User();
 
     const subscription = this.usersService.getLoggedUserInfo()
@@ -62,9 +62,7 @@ export class EditProfileComponent implements OnInit, AfterContentInit, OnDestroy
         const { filesUrls } = response;
         this.user.profilePictureUrl = filesUrls[0];
         this.notificationService.showInfo('Click on save changes in order to save your work');
-      }, (err) => {
-        console.log(err);
-      });
+      }, (err) => { });
 
     this.subscriptions.push(sub);
   }
