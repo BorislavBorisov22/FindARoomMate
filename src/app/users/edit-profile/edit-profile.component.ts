@@ -8,7 +8,7 @@ import { UsersService } from './../../services/users.service';
 import { User } from './../../models/user.model';
 import { Component, OnInit, Output, EventEmitter, AfterContentInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-edit-profile',

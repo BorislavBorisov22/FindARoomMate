@@ -3,7 +3,6 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Injectable()
 export class NotificationService {
-
   constructor(private readonly toastr: ToastsManager) {
   }
 
