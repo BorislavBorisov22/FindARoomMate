@@ -1,4 +1,3 @@
-import { OffersResolver } from './all-offers/resolvers/offers-resolver.service';
 import { LogoutGuardService } from './../services/guards/logout-guard.service';
 import { OfferInfoComponent } from './offer-info/offer-info.component';
 import { AllOffersComponent } from './all-offers/all-offers.component';
