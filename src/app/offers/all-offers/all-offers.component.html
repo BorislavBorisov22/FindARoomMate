@@ -1,27 +1,27 @@
-<!-- <div *ngFor="let offer of offers">  
-  <div>Title: {{offer.title}}</div>
-</div>  -->
-
 <!-- Reference: https://github.com/ashleydw/lightbox/ -->
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <main>
     <div class="container mt40">
         <section class="row">
             <article class="col-xs-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let offer of (offers|sort)">
-                <!-- <div class="panel panel-default">
-                    <div class="panel-body offer-image">
+                 <div class="card panel panel-default">
+                    <div class="panel-body offer-image ">
                         <a [routerLink]="['/offers/', offer._id]" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
-                            <img class="offer-image" src="{{offer.image1}}" alt="Image" />
+                            <img class="card-img-top custom-card offer-image" src="{{offer.image1}}" alt="Image" />
                             <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
                         </a>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer card-block">
                         <h5><a href="#" class="a" title="Image">{{offer.title}}</a></h5>
-                        <h5 class="a"><i class="fa fa-money" aria-hidden="true"></i> {{offer.price}} per month</h5>
-                        <h5><i class="fa fa-map-marker" aria-hidden="true"></i> {{offer.address}}</h5>
+                        <p class="a">
+                            <i class="fa fa-money left" aria-hidden="true"> {{offer.price}}</i> 
+                            <i class="fa fa-map-marker card-location" aria-hidden="true"> {{offer.address}}</i>  
+                        </p>
                     </div>
-                </div> -->
-                <div class="card panel panel-default zoom" style="width: 20rem;">
+                </div> 
+
+
+                <!-- <div class="card panel panel-default zoom" style="width: 20rem;">
                     <div class="panel-body offer-image zoom">
                         <img class="card-img-top custom-card offer-image" src="{{offer.image1}}" alt="Card image cap">
                         <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
@@ -42,7 +42,7 @@
                     <div class="card-footer">
                         <img class="author-pic img-thumbnail" src="{{offer.author.profilePictureUrl}}"><small class="text-muted"> {{offer.author.username}}</small>
                     </div>
-                </div>
+                </div> -->
             </article>
         </section>
     </div>
