@@ -2,7 +2,6 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-
 const init = (data) => {
     require('./config/app.config')(app);
     require('./config/auth.config')(app, data);
@@ -15,7 +14,7 @@ const init = (data) => {
     require('./routes')(app, controllers);
 
     app.get('/*', (req, res) => {
-        res.sendFile(path.join(__dirname, "../"))
+        res.sendFile(path.join(__dirname, "../../dist"))
     });
 
     return Promise.resolve(app);
