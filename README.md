@@ -16,8 +16,8 @@ FindARoommmate is a single page app written in Node.js and Angular that gives pe
 
 ### Application images:
 ![](/app-images/home.png)
-![](/app-images/destinations.png)
-![](/app-images/destinations.png)
+![](/app-images/offers.png)
+![](/app-images/comments.png)
 
 # Credits
 | Team member         | Username                                                                    |
