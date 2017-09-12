@@ -2,7 +2,7 @@
 **Telerik Academy SPA with Angular Project developed by team MomentousOwls**
 
 ## Project Description
-FindARoommmate is a single page app writenn in Node.js and Angular that gives people an easy way to find a new place to live or to offer their own place for rent and not event bother getting outside when they can find their dream place just by in our website.
+FindARoommmate is a single page app written in Node.js and Angular that gives people an easy way to find a new place to live or to offer their own place for rent and not event bother getting outside when they can find their dream place just by in our website.
 
 ## Application Demo
 - [**Live Preview**](https://findaroommate.herokuapp.com/home)
