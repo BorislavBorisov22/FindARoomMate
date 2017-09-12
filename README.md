@@ -1,14 +1,23 @@
 # Find A Roommate
-**Angular Project developed by team MomentousOwls**
+**Telerik Academy SPA with Angular Project developed by team MomentousOwls**
 
 ## Project Description
-FindARoommmate is a web project that gives people an easy way to find a new place to live
-or to offer their own place for rent. Why bother getting outside and looking for somewhere to stay
-when you can find your dream place just by sitting on you computer.
+FindARoommmate is a single page app writenn in Node.js and Angular that gives people an easy way to find a new place to live or to offer their own place for rent and not event bother getting outside when they can find their dream place just by in our website.
 
 ## Application Demo
-- [**Live Preview**](https://tourist-sites.herokuapp.com)
-- [**Telerik Academy Showcase System**](http://best.telerikacademy.com/projects/681/LetsMakeUsFamous)
+- [**Live Preview**](https://findaroommate.herokuapp.com/home)
+
+## Local Instalation
+*`ng build and then npm start` - runs the application on localhost:80*
+<br/>
+*`ng test` - Runs all unit tests*
+<br/>
+*`ng e2e` - Runs all end to end tests*
+
+### Application images:
+![](/app-images/home.png)
+![](/app-images/destinations.png)
+![](/app-images/destinations.png)
 
 # Credits
 | Team member         | Username                                                                    |
