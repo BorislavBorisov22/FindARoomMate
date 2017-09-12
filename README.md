@@ -7,7 +7,7 @@ FindARoommmate is a single page app written in Node.js and Angular that gives pe
 ## Application Demo
 - [**Live Preview**](https://findaroommate.herokuapp.com/home)
 
-## Local Instalation
+## Local Installation
 *`ng build and then npm start` - runs the application on localhost:80*
 <br/>
 *`ng test` - Runs all unit tests*
