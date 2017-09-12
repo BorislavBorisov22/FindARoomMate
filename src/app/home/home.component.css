@@ -57,14 +57,26 @@ h1,
     z-index: 500;
     color: white;
     position: absolute;
+    left: 5%;
 }
 
 h1 {
-    top: 25%;
-    left: 15%;
+    top: 35%;
 }
 
 .motivation {
-    top: 40%;
-    left: 15%;
+    top: 45%;
+}
+
+.destinationsPara {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 3%;
+    z-index: 500;
+    padding: 20px;
+}
+
+.destinationsPara a {
+    padding: 20px;
 }

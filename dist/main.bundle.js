@@ -842,7 +842,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, " .dropdown {\r\n     width: 120px;\r\n }\r\n \r\n .dropdown-menu {\r\n     width: 120px;\r\n }\r\n /* .dropdown-link {\r\n     text-align: center;\r\n }\r\n  */\r\n \r\n .navbar-right {\r\n     float: right !important;\r\n }\r\n \r\n .profile-pic-small {\r\n     width: 30px;\r\n     height: 30px;\r\n     float: left;\r\n     margin-right: 5px;\r\n }\r\n \r\n .navbar-brand {\r\n     color: #33a1d5;\r\n     font-family: Mistral, Brush Script MT, Rage Italic;\r\n     font-weight: bold;\r\n     font-size: 26px;\r\n }", ""]);
+exports.push([module.i, " .dropdown {\r\n     width: 120px;\r\n }\r\n \r\n .dropdown-menu {\r\n     width: 120px;\r\n }\r\n \r\n .navbar-right {\r\n     float: right !important;\r\n }\r\n \r\n .profile-pic-small {\r\n     width: 30px;\r\n     height: 30px;\r\n     float: left;\r\n     margin-right: 5px;\r\n }\r\n \r\n .navbar-brand {\r\n     color: #33a1d5;\r\n     font-family: Mistral, Brush Script MT, Rage Italic;\r\n     font-weight: bold;\r\n     font-size: 26px;\r\n }", ""]);
 
 // exports
 
