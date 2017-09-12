@@ -1,10 +1,12 @@
+import 'rxjs/add/operator/map';
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+
 import { Subscription } from 'rxjs/Subscription';
-import { Router, ActivatedRoute } from '@angular/router';
+import { User } from './../../models/user.model';
 import { UserStorageService } from './../../services/user-storage.service';
 import { UsersService } from './../../services/users.service';
-import { User } from './../../models/user.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import 'rxjs/add/operator/map';
 
 const USERS_ALL_URL = '/user/all';
 const DEFAULT_PAGE_SIZE = 9;
@@ -64,6 +66,7 @@ export class UsersAllComponent implements OnInit, OnDestroy {
         }
 
         this.users = responseUsers.reverse().splice((this.currentPage - 1) * this.pageSize, this.pageSize);
+      }, () => {
       });
 
     this.subscriptions.push(sub);

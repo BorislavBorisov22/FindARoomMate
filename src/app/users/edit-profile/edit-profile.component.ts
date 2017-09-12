@@ -1,14 +1,16 @@
-import { UserStorageService } from './../../services/user-storage.service';
-import { NotificationService } from './../../services/notification.service';
-import { Response, Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+import { AfterContentInit, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Http, Response } from '@angular/http';
+
 import { FileUploaderService } from './../../services/file-uploader.service';
 import { NgForm } from '@angular/forms';
+import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
-import { UsersService } from './../../services/users.service';
-import { User } from './../../models/user.model';
-import { Component, OnInit, Output, EventEmitter, AfterContentInit, OnDestroy } from '@angular/core';
-import 'rxjs/add/operator/map';
 import { Subscription } from 'rxjs/Subscription';
+import { User } from './../../models/user.model';
+import { UserStorageService } from './../../services/user-storage.service';
+import { UsersService } from './../../services/users.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -61,6 +63,7 @@ export class EditProfileComponent implements OnInit, AfterContentInit, OnDestroy
       .subscribe((response: any) => {
         const { filesUrls } = response;
         this.user.profilePictureUrl = filesUrls[0];
+        console.log(filesUrls, 'url');
         this.notificationService.showInfo('Click on save changes in order to save your work');
       }, (err) => { });
 

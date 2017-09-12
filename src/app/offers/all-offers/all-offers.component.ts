@@ -1,7 +1,8 @@
-import { Offer } from './../../models/offer.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { OffersService } from './../../services/offers.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
+import { Offer } from './../../models/offer.model';
+import { OffersService } from './../../services/offers.service';
 
 const DEFAULT_PAGE_SIZE = 12;
 const DEFAULT_PAGE = 1;

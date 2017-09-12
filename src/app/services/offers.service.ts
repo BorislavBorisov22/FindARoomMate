@@ -1,12 +1,12 @@
 import { Comment } from './../models/comment.model';
-import { UserStorageService } from './user-storage.service';
-import { Offer } from './../models/offer.model';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import { HttpRequesterService } from './http-requester.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Offer } from './../models/offer.model';
+import { Response } from '@angular/http';
+import { UserStorageService } from './user-storage.service';
 
-const DOMAIN_URL = 'http://localhost:4201/api';
+const DOMAIN_URL = '/api';
 const ADD_OFFER_URL = DOMAIN_URL + '/offers/add';
 const ALL_OFFERS_URL = DOMAIN_URL + '/offers/all';
 const OFFER_INFO_URL = DOMAIN_URL + '/offers/';

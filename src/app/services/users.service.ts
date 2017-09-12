@@ -1,11 +1,11 @@
-import { UserStorageService } from './user-storage.service';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { User } from './../models/user.model';
 import { HttpRequesterService } from './http-requester.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
+import { User } from './../models/user.model';
+import { UserStorageService } from './user-storage.service';
 
-const DOMAIN_URL = 'http://localhost:4201/api';
+const DOMAIN_URL = '/api';
 const REGISTER_USER_URL = DOMAIN_URL + '/auth/register';
 const LOGIN_USER_URL = DOMAIN_URL + '/auth/login';
 const USER_PERSONAL_INFO_URL = DOMAIN_URL + '/users/profile';
@@ -14,7 +14,6 @@ const GET_ALL_USERS_URL = DOMAIN_URL + '/users';
 
 @Injectable()
 export class UsersService {
-
   constructor(
     private httpRequester: HttpRequesterService,
     private userStorageService: UserStorageService) {

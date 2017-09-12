@@ -4,7 +4,7 @@
     <div class="container mt40">
         <section class="row">
             <article class="col-xs-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let offer of (offers|sort)">
-                 <div class="card panel panel-default">
+                <div class="card panel panel-default">
                     <div class="panel-body offer-image ">
                         <a [routerLink]="['/offers/', offer._id]" title="Image" class="zoom" data-type="image" data-toggle="lightbox">
                             <img class="card-img-top custom-card offer-image" src="{{offer.image1}}" alt="Image" />
@@ -14,11 +14,11 @@
                     <div class="panel-footer card-block">
                         <h5><a href="#" class="a" title="Image">{{offer.title}}</a></h5>
                         <p class="a">
-                            <i class="fa fa-money left" aria-hidden="true"> {{offer.price}}</i> 
-                            <i class="fa fa-map-marker card-location" aria-hidden="true"> {{offer.address}}</i>  
+                            <i class="fa fa-money left" aria-hidden="true"> {{offer.price}}</i>
+                            <i class="fa fa-map-marker card-location" aria-hidden="true"> {{offer.address}}</i>
                         </p>
                     </div>
-                </div> 
+                </div>
 
 
                 <!-- <div class="card panel panel-default zoom" style="width: 20rem;">

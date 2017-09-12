@@ -14,7 +14,7 @@ const init = (data) => {
     require('./routes')(app, controllers);
 
     app.get('/*', (req, res) => {
-        res.sendFile(path.join(__dirname, "../../dist"))
+        res.sendFile(path.join(__dirname, "../../dist/index.html"))
     });
 
     return Promise.resolve(app);

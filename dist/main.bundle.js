@@ -318,9 +318,9 @@ var Comment = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FileUploaderService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -334,7 +334,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UPLOAD_FILE_NAME = 'uploads[]';
-var UPLOAD_IMAGE_URL = 'http://localhost:4201/upload';
+var UPLOAD_IMAGE_URL = '/upload';
 var FileUploaderService = (function () {
     function FileUploaderService(httpRequester, userStorageService) {
         this.httpRequester = httpRequester;
@@ -348,8 +348,8 @@ var FileUploaderService = (function () {
     return FileUploaderService;
 }());
 FileUploaderService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
 ], FileUploaderService);
 
 var _a, _b;
@@ -560,9 +560,9 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OffersService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_comment_model__ = __webpack_require__("../../../../../src/app/models/comment.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -576,7 +576,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DOMAIN_URL = 'http://localhost:4201/api';
+var DOMAIN_URL = '/api';
 var ADD_OFFER_URL = DOMAIN_URL + '/offers/add';
 var ALL_OFFERS_URL = DOMAIN_URL + '/offers/all';
 var OFFER_INFO_URL = DOMAIN_URL + '/offers/';
@@ -618,8 +618,8 @@ var OffersService = (function () {
     return OffersService;
 }());
 OffersService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
 ], OffersService);
 
 var _a, _b;
@@ -693,9 +693,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__http_requester_service__ = __webpack_require__("../../../../../src/app/services/http-requester.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_storage_service__ = __webpack_require__("../../../../../src/app/services/user-storage.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -708,7 +708,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DOMAIN_URL = 'http://localhost:4201/api';
+var DOMAIN_URL = '/api';
 var REGISTER_USER_URL = DOMAIN_URL + '/auth/register';
 var LOGIN_USER_URL = DOMAIN_URL + '/auth/login';
 var USER_PERSONAL_INFO_URL = DOMAIN_URL + '/users/profile';
@@ -764,8 +764,8 @@ var UsersService = (function () {
     return UsersService;
 }());
 UsersService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__http_requester_service__["a" /* HttpRequesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__http_requester_service__["a" /* HttpRequesterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__user_storage_service__["a" /* UserStorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__user_storage_service__["a" /* UserStorageService */]) === "function" && _b || Object])
 ], UsersService);
 
 var _a, _b;
