@@ -12,8 +12,7 @@ const attachControllers =
                 const currentController = require(modulePath);
 
                 controllersObject[currentController.name] = currentController(
-                    dataToAttach, utilsToAttach,
-                );
+                    dataToAttach, utilsToAttach);
             });
 
         return controllersObject;

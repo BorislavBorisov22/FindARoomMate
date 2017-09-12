@@ -37,10 +37,9 @@ const offersController = ({ users, offers }, _) => {
 
             return offers.addComment(offerId, comment)
                 .then((result) => {
-                    return res.status(201).send({ success: true, offer: result })
+                    return res.status(201).send({ success: true, offer: result });
                 })
                 .catch((err) => {
-                    console.log(err);
                     return res
                         .status(400)
                         .send({ success: false, err, });
